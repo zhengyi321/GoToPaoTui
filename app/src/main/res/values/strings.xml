@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">走兔跑腿</string>
+
+    <!--main_bottom-->
+    <string name="index">首页</string>
+    <string name="dataCenter">数据中心</string>
+    <string name="orderCenter">订单中心</string>
+    <string name="personCenter">个人中心</string>
+
+
+    <!--main_bottom-->
+
+    <!--main_index-->
+    <string name="goto_paotui_manage">走兔同城跑腿员管理端</string>
+    <string name="select_by_orderno">请输入订单编号查询</string>
+    <string name="search">搜索</string>
+    <string name="getmoney_for_paotui">跑腿费收款</string>
+    <string name="the_nearly_get_fee">最近一笔收款</string>
+    <string name="getby_zfb">支付宝收款</string>
+    <string name="getby_wx">微信收款</string>
+    <string name="getby_cash">现金收款</string>
+    <string name="person_record_data">个人业绩数据</string>
+    <string name="today_order_the_most">今日订单最高</string>
+    <string name="today_percentage_the_most">提成最高</string>
+    <string name="today_mile_the_most">里程最高</string>
+    <string name="today_order_or_ticket">今日订单/票</string>
+    <string name="yesterday_order">昨日订单</string>
+    <string name="month_all_order">本月总订单</string>
+    <string name="today_percentage">今日提成/元</string>
+    <string name="yesterday_percentage">昨日提成</string>
+    <string name="month_all_percentage">本月总提成</string>
+    <string name="today_mile">今日里程/km</string>
+    <string name="yesterday_mile">昨日里程</string>
+    <string name="month_all_mile">本月总里程</string>
+    <!--main_index-->
+</resources>
