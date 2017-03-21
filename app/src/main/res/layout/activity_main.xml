@@ -9,7 +9,7 @@
     android:orientation="vertical"
     >
 
-    <android.support.v4.widget.NestedScrollView
+<!--    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -17,7 +17,14 @@
 
 
 
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+    <include layout="@layout/fragment_activity_main_index_lly"/>
+    </LinearLayout>
     <include layout="@layout/activity_main_common_bottom"/>
 
 </LinearLayout>

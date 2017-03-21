@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_main_ordercenter_topbar_height"
+    android:background="@color/main_ordercenter_white_bg"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/orderCenter"
+        android:textColor="@color/main_ordercenter_word_black_bg"
+        android:textSize="@dimen/dimen_main_ordercenter_top_title_word_text_size"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        />
+</RelativeLayout>

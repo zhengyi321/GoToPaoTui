@@ -3,7 +3,7 @@
 
     <!--main_bottom-->
     <string name="index">首页</string>
-    <string name="dataCenter">数据中心</string>
+    <string name="dataCenter">接单</string>
     <string name="orderCenter">订单中心</string>
     <string name="personCenter">个人中心</string>
 
@@ -16,6 +16,7 @@
     <string name="search">搜索</string>
     <string name="getmoney_for_paotui">跑腿费收款</string>
     <string name="the_nearly_get_fee">最近一笔收款</string>
+    <string name="the_nearly_get_fee_demo">今天 11:45 12元</string>
     <string name="getby_zfb">支付宝收款</string>
     <string name="getby_wx">微信收款</string>
     <string name="getby_cash">现金收款</string>
@@ -33,4 +34,20 @@
     <string name="yesterday_mile">昨日里程</string>
     <string name="month_all_mile">本月总里程</string>
     <!--main_index-->
+
+
+    <!--main_ordercenter-->
+
+    <string name="ordertype">订单类型</string>
+    <string name="data">日期</string>
+    <string name="shenghuopaotui">生活跑腿</string>
+    <string name="orderdata">下单日期:</string>
+    <string name="get">取</string>
+    <string name="send">送</string>
+    <string name="destination">目的地 :</string>
+    <string name="receiveman">收件人</string>
+    <string name="ordernum">订单编号 :</string>
+    <string name="paymoney">实付款 :</string>
+    <!--main_ordercenter-->
+
 </resources>

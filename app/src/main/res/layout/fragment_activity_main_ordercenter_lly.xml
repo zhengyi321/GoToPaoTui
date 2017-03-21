@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_ordercenter_gray_bg"
+    >
+    <include layout="@layout/fragment_activity_main_ordercenter_topbar_lly"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/split_width_or_height"
+        android:background="@color/main_ordercenter_gray_bg"
+        />
+    <!--订单类型 日期-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_main_ordercenter_tabbar_height"
+        android:orientation="horizontal"
+        android:background="@color/main_ordercenter_white_bg"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ordertype"
+                android:textColor="@color/main_ordercenter_word_black_bg"
+                android:textSize="@dimen/dimen_main_ordercenter_content_word_text_size"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="@dimen/split_width_or_height"
+            android:layout_height="match_parent"
+            android:background="@color/main_ordercenter_gray_bg"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            />
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data"
+                android:textColor="@color/main_ordercenter_word_black_bg"
+                android:textSize="@dimen/dimen_main_ordercenter_content_word_text_size"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <!--订单类型 日期-->
+    <com.zoutu.gotolibrary.RecycleView.XRecycleView.XRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.zoutu.gotolibrary.RecycleView.XRecycleView.XRecyclerView>
+
+</LinearLayout>

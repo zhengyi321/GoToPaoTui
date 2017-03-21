@@ -7,14 +7,52 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="split_width_or_height">1dp</dimen>
     <!--common dim-->
-
-    <!--main 首页-->
     <dimen name="dimen_main_common_bottom_height">46dp</dimen>
+    <!--main_index 首页-->
+    <dimen name="dimen_main_index_topbar_height">54dp</dimen>
     <dimen name="dimen_main_index_top_bg_height">150dp</dimen>
     <dimen name="dimen_main_index_selector_margin_left_right">50dp</dimen>
-    <dimen name="dimen_main_index_top_selector_height">40dp</dimen>
+    <dimen name="dimen_main_index_top_selector_height">30dp</dimen>
     <dimen name="dimen_main_index_top_edit_margin_left">20dp</dimen>
     <dimen name="dimen_main_index_marqueetext_height">45dp</dimen>
-    <!--main 首页-->
+    <dimen name="dimen_main_index_goto_first_width">55dp</dimen>
+    <dimen name="dimen_main_index_goto_first_height">20dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_height">180dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_margintop_size">15dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_width_height">35dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_zfb_width">55dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_zfb_height">45dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_wx_width">45dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_wx_height">45dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_cash_width">45dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_ico_thirdpay_cash_height">45dp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_title_word_size">13sp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_content_word_size">10sp</dimen>
+    <dimen name="dimen_main_index_goto_paotuifei_name_word_size">13sp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_height">300dp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_margintop_size">15sp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_marginbottom_size">15sp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_title_ico_width_height">35dp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_content_ico_width_height">30dp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_content_ico_mile_width">25dp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_content_ico_mile_height">30dp</dimen>
+
+
+    <!--main_index 首页-->
+
+    <!--main_ordercenter 订单中心 -->
+    <dimen name="dimen_main_ordercenter_topbar_height">54dp</dimen>
+    <dimen name="dimen_main_ordercenter_tabbar_height">25dp</dimen>
+    <dimen name="dimen_main_ordercenter_content_xrv_item_height">130dp</dimen>
+    <dimen name="dimen_main_ordercenter_title_logo_ico_width">35dp</dimen>
+    <dimen name="dimen_main_ordercenter_title_logo_ico_height">25dp</dimen>
+    <dimen name="dimen_main_ordercenter_content_circle_logo_width_height">55dp</dimen>
+    <dimen name="dimen_main_ordercenter_title_word_text_size">13sp</dimen>
+    <dimen name="dimen_main_ordercenter_content_word_text_size">11sp</dimen>
+    <dimen name="dimen_main_ordercenter_top_title_word_text_size">15sp</dimen>
+    <dimen name="dimen_main_ordercenter_get_or_send_text_size">18sp</dimen>
+    <dimen name="dimen_main_ordercenter_receive_margintop_size">5dp</dimen>
+    <!--main_ordercenter 订单中心 -->
+
 
 </resources>
