@@ -12,7 +12,7 @@
     <dimen name="dimen_main_index_topbar_height">54dp</dimen>
     <dimen name="dimen_main_index_top_bg_height">150dp</dimen>
     <dimen name="dimen_main_index_selector_margin_left_right">50dp</dimen>
-    <dimen name="dimen_main_index_top_selector_height">30dp</dimen>
+    <dimen name="dimen_main_index_top_selector_height">40dp</dimen>
     <dimen name="dimen_main_index_top_edit_margin_left">20dp</dimen>
     <dimen name="dimen_main_index_marqueetext_height">45dp</dimen>
     <dimen name="dimen_main_index_goto_first_width">55dp</dimen>
@@ -30,8 +30,8 @@
     <dimen name="dimen_main_index_goto_paotuifei_content_word_size">10sp</dimen>
     <dimen name="dimen_main_index_goto_paotuifei_name_word_size">13sp</dimen>
     <dimen name="dimen_main_index_goto_gerenyejishuju_height">300dp</dimen>
-    <dimen name="dimen_main_index_goto_gerenyejishuju_margintop_size">15sp</dimen>
-    <dimen name="dimen_main_index_goto_gerenyejishuju_marginbottom_size">15sp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_margintop_size">15dp</dimen>
+    <dimen name="dimen_main_index_goto_gerenyejishuju_marginbottom_size">40dp</dimen>
     <dimen name="dimen_main_index_goto_gerenyejishuju_title_ico_width_height">35dp</dimen>
     <dimen name="dimen_main_index_goto_gerenyejishuju_content_ico_width_height">30dp</dimen>
     <dimen name="dimen_main_index_goto_gerenyejishuju_content_ico_mile_width">25dp</dimen>
@@ -40,19 +40,162 @@
 
     <!--main_index 首页-->
 
+    <!--main getorder-->
+    <dimen name="dimen_main_getorder_topbar_height">54dp</dimen>
+    <dimen name="dimen_main_getorder_topbar_title_word_size">17sp</dimen>
+    <!--main getorder-->
+
+
     <!--main_ordercenter 订单中心 -->
     <dimen name="dimen_main_ordercenter_topbar_height">54dp</dimen>
-    <dimen name="dimen_main_ordercenter_tabbar_height">25dp</dimen>
-    <dimen name="dimen_main_ordercenter_content_xrv_item_height">130dp</dimen>
+    <dimen name="dimen_main_ordercenter_tabbar_height">40dp</dimen>
+    <dimen name="dimen_main_ordercenter_content_xrv_item_height">200dp</dimen>
     <dimen name="dimen_main_ordercenter_title_logo_ico_width">35dp</dimen>
-    <dimen name="dimen_main_ordercenter_title_logo_ico_height">25dp</dimen>
+    <dimen name="dimen_main_ordercenter_title_logo_ico_height">30dp</dimen>
     <dimen name="dimen_main_ordercenter_content_circle_logo_width_height">55dp</dimen>
     <dimen name="dimen_main_ordercenter_title_word_text_size">13sp</dimen>
     <dimen name="dimen_main_ordercenter_content_word_text_size">11sp</dimen>
+    <dimen name="dimen_main_ordercenter_content_word_margin_right_size">15dp</dimen>
     <dimen name="dimen_main_ordercenter_top_title_word_text_size">15sp</dimen>
     <dimen name="dimen_main_ordercenter_get_or_send_text_size">18sp</dimen>
     <dimen name="dimen_main_ordercenter_receive_margintop_size">5dp</dimen>
+    <dimen name="dimen_main_ordercenter_xrv_item_margin_left_right_size">15dp</dimen>
+    <dimen name="dimen_main_ordercenter_xrv_item_margin_top_bottom_size">10dp</dimen>
     <!--main_ordercenter 订单中心 -->
+
+
+    <!--main_ordercenter_orderdetail-->
+    <dimen name="dimen_main_ordercenter_orderdetail_topbar_height">54dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_topbar_back_word_size">13sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_margin_top_dis">15dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_margin_bottom_dis">15dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_qu_width">15dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_qu_height">25dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_qu_marginleft_size">10dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_height">240dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_first_height">30dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_second_height">65dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_third_height">50dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_fourth_height">65dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_detail_fivth_height">30dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_remark_item_height">45dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_send_item_height">60dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_send_item_paddingtop">6dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_send_item_paddingbottom">6dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_price_item_height">60dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_title_word_size">16sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_name_word_size">13sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_value_word_size">10sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_blue_point_width">5dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_blue_triangle_width">10dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_blue_triangle_height">10dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_displayroad_in_map_ico_width">20dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_displayroad_in_map_ico_height">18dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_displayroad_in_map_ico_name_margintop">5dp</dimen>
+    <!--main_ordercenter_orderdetail-->
+
+
+    <!--main_personcenter 个人中心-->
+    <dimen name="dimen_main_personcenter_topbar_height">54dp</dimen>
+    <dimen name="dimen_main_personcenter_topbar_tuichu_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_topbar_tuichu_rly_width">50dp</dimen>
+    <dimen name="dimen_main_personcenter_topbar_tuichu_rly_height">40dp</dimen>
+    <dimen name="dimen_main_personcenter_content_head_ico_width">50dp</dimen>
+    <dimen name="dimen_main_personcenter_content_head_ico_height">50dp</dimen>
+    <dimen name="dimen_main_personcenter_content_tel_margin_top_size">30dp</dimen>
+    <dimen name="dimen_main_personcenter_content_top_pic_bg_height">150dp</dimen>
+    <dimen name="dimen_main_personcenter_content_top_tel_word_size">12sp</dimen>
+    <dimen name="dimen_main_personcenter_content_top_tel_margintop_size">20dp</dimen>
+    <dimen name="dimen_main_personcenter_content_money_item_height">60dp</dimen>
+    <dimen name="dimen_main_personcenter_content_gerenticheng_word_size">10sp</dimen>
+    <dimen name="dimen_main_personcenter_content_gerenticheng_margin_top_size">5dp</dimen>
+    <dimen name="dimen_main_personcenter_content_money_word_margin_top_size">5dp</dimen>
+    <dimen name="dimen_main_personcenter_content_money_word_size">18sp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijitiquzhiyinhangka_word_size">12sp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijitiquzhiyinhangka_word_margintop_size">20dp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijidaka_item_margin_top_size">10dp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijidaka_item_word_size">14sp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijidaka_item_word_margintop_size">10dp</dimen>
+    <dimen name="dimen_main_personcenter_content_lijidaka_item_height">80dp</dimen>
+    <dimen name="dimen_main_personcenter_content_function_item_margin_top_size">10dp</dimen>
+    <dimen name="dimen_main_personcenter_content_function_item_height">200dp</dimen>
+    <dimen name="dimen_main_personcenter_content_caiwujiekuan_ico_width">15dp</dimen>
+    <dimen name="dimen_main_personcenter_content_caiwujiekuan_ico_height">12dp</dimen>
+    <dimen name="dimen_main_personcenter_content_caiwujiekuan_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_content_caiwujiekuan_clicksee_word_size">10sp</dimen>
+    <dimen name="dimen_main_personcenter_content_jishiben_ico_width">12dp</dimen>
+    <dimen name="dimen_main_personcenter_content_jishiben_ico_height">15dp</dimen>
+    <dimen name="dimen_main_personcenter_content_jishiben_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_content_jishiben_recordtheimportant_word_size">10sp</dimen>
+    <dimen name="dimen_main_personcenter_content_kaoqinjilu_ico_width">12dp</dimen>
+    <dimen name="dimen_main_personcenter_content_kaoqinjilu_ico_height">12dp</dimen>
+    <dimen name="dimen_main_personcenter_content_kaoqinjilu_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_content_remember_take_card_everyday">10sp</dimen>
+    <dimen name="dimen_main_personcenter_content_paibanbiao_ico_width">15dp</dimen>
+    <dimen name="dimen_main_personcenter_content_paibanbiao_ico_height">13dp</dimen>
+    <dimen name="dimen_main_personcenter_content_paibanbiao_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_content_zaozhidaozaoanpai_word_size">10sp</dimen>
+    <dimen name="dimen_main_personcenter_content_chakanmendian_ico_width">15dp</dimen>
+    <dimen name="dimen_main_personcenter_content_chakanmendian_ico_height">12dp</dimen>
+    <dimen name="dimen_main_personcenter_content_chakanmendian_word_size">13sp</dimen>
+    <dimen name="dimen_main_personcenter_content_chaxunqitamendiantel_word_size">10sp</dimen>
+
+    <dimen name="dimen_main_personcenter_content_function_item_margin_bottom_size">50dp</dimen>
+    <dimen name="dimen_main_personcenter_content_function_splite_margin_top_bottom_size">5dp</dimen>
+    <dimen name="dimen_main_personcenter_content_function_splite_margin_left_right_size">5dp</dimen>
+    <!--<dimen name="dimen_main_personcenter_content"-->
+    <!--<dimen name="dimen_main_personcenter_content"-->
+    <!--main_personcenter 个人中心-->
+
+    <!--main personcenter login-->
+    <dimen name="dimen_main_personcenter_login_topbar">54dp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_item_height">40dp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_item_margin_left_right_size">25dp</dimen>
+    <dimen name="dimen_main_personcenter_login_check_logindata_item_margin_left_right_size">25dp</dimen>
+    <dimen name="dimen_main_personcenter_login_check_logindata_submit_margin_left_right_size">25dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_word_margin_right_size">35dp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_item_margin_top_bottom_size">12dp</dimen>
+    <dimen name="dimen_main_personcenter_login_loginsubmit_margin_top_bottom_size">12dp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_title_word_size">14sp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_input_word_size">11sp</dimen>
+    <dimen name="dimen_main_personcenter_login_check_ico_width">15dp</dimen>
+    <dimen name="dimen_main_personcenter_login_check_ico_height">15dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_word_size">14sp</dimen>
+    <dimen name="dimen_main_personcenter_login_forget_ico_width">15dp</dimen>
+    <dimen name="dimen_main_personcenter_login_forget_ico_height">15dp</dimen>
+    <dimen name="dimen_main_personcenter_login_forget_word_size">14sp</dimen>
+    <dimen name="dimen_main_personcenter_login_remember_mylogin_data">11sp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_item_half_round_raduis_size">60dp</dimen>
+    <dimen name="dimen_main_personcenter_login_input_item_angle_size">0dp</dimen>
+<!--    <dimen name="dimen_main_personcenter_login"
+    <dimen name="dimen_main_personcenter_login"
+    <dimen name="dimen_main_personcenter_login"-->
+    <!--main personcenter login-->
+
+
+
+
+
+
+
+
+
+
+    <!--main personcenter login register-->
+    <dimen name="dimen_main_personcenter_login_register_input_item_margin_left_right">25dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_registersubmit_margin_left_right">25dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_registersubmit_margin_top_bottom_size">15dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_input_item_margin_top_bottom_size">12dp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_title_word_size">14sp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_content_word_size">11sp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_submit_word_size">15sp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_getyanzhengma_word_size">12sp</dimen>
+    <dimen name="dimen_main_personcenter_login_register_topbar_height">54dp</dimen>
+   <!-- <dimen name="dimen_main_personcenter_login_register"
+    <dimen name="dimen_main_personcenter_login_register"-->
+
+    <!--main personcenter login register-->
+
 
 
 </resources>

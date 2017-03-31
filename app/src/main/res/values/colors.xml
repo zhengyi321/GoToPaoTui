@@ -7,6 +7,8 @@
     <!--main-index-->
     <color name="main_index_gray_bg">#f5f5f5</color>
     <color name="main_index_white_bg">#ffffff</color>
+    <color name="main_index_green_bg">#def72e</color>
+
     <color name="main_index_search_black_bg">#000000</color>
     <color name="main_index_word_black_bg">#000000</color>
     <color name="main_index_word_gray_bg">#b3b3b3</color>
@@ -16,7 +18,11 @@
     <color name="main_index_split_line_color">#ededed</color>
     <!--main-index-->
 
-
+    <!--main getorder-->
+    <color name="main_getorder_gray_bg">#f5f5f5</color>
+    <color name="main_getorder_topbar_black_word_size">#000000</color>
+    <color name="main_getorder_topbar_white_bg">#ffffff</color>
+    <!--main getorder-->
 
     <!--main_ordercenter-->
     <color name="main_ordercenter_word_black_bg">#000000</color>
@@ -29,8 +35,45 @@
     <color name="main_ordercenter_logo_blue_bg">#6699ff</color>
     <!--main_ordercenter-->
 
+    <!--main_ordercenter_orderdetail-->
+    <color name="main_ordercenter_orderdetail_white_bg">#ffffff</color>
+    <color name="main_ordercenter_orderdetail_gray_bg">#f2f2f2</color>
+    <color name="main_ordercenter_orderdetail_blue_bg">#6699ff</color>
+    <color name="main_ordercenter_orderdetail_word_black_bg">#010101</color>
+    <color name="main_ordercenter_orderdetail_word_gray_bg">#808080</color>
+    <!--main_ordercenter_orderdetail-->
+
+    <!--main_personcenter 个人中心-->
+    <color name="main_penersoncenter_content_word_black_bg">#010101</color>
+    <color name="main_penersoncenter_tabbar_word_black_bg">#010101</color>
+    <color name="main_penersoncenter_tabbart_word_gray_bg">#C0C0C0</color>
+    <color name="main_penersoncenter_content_word_gray_bg">#f5f5f5</color>
+    <color name="main_personcenter_content_white_bg">#ffffff</color>
+    <color name="main_personcenter_content_gray_bg">#f5f5f5</color>
+    <color name="main_personcenter_topbar_green_bg">#def72e</color>
+    <!--main_personcenter 个人中心-->
+
+    <!--main personcenter login-->
+    <color name="main_personcenter_login_white_bg">#ffffff</color>
+    <color name="main_personcenter_login_black_bg">#000000</color>
+    <color name="main_personcenter_login_stroke_black_bg">#000000</color>
+    <color name="main_personcenter_login_input_stroke_gray_dash_bg">#D3D3D3</color>
+    <color name="main_personcenter_login_input_title_word_white_bg">#ffffff</color>
+    <color name="main_personcenter_login_input_input_word_black_bg">#000000</color>
+    <color name="main_personcenter_login_register_word_gray_bg">#D3D3D3</color>
+    <!--<color name="main_personcenter_login_"-->
 
 
+    <!--main personcenter login register-->
+    <color name="main_personcenter_login_register_content_white_bg">#ffffff</color>
+    <color name="main_personcenter_login_register_input_title_white_bg">#ffffff</color>
+    <color name="main_personcenter_login_register_content_black_bg">#000000</color>
+    <color name="main_personcenter_login_register_input_content_black_bg">#000000</color>
+    <color name="main_personcenter_login_register_submit_green_bg">#70cc14</color>
+    <color name="main_personcenter_login_register_submit_word_black_bg">#000000</color>
+    <color name="main_personcenter_login_register_get_yanzhengma_gray_bg">#C0C0C0</color>
+    <color name="main_personcenter_login_register_input_stroke_gray_dash_bg">#D3D3D3</color>
+    <!--main personcenter login register-->
 
 
     <!--常见颜色-->
@@ -167,8 +210,7 @@
     <!-- 蓟色 -->
     <color name="lightgray">#D3D3D3</color>
     <!-- 亮灰色 -->
-    <color name="lightgrey">#D3D3D3</color>
-    <!-- 亮灰色 -->
+
     <color name="tan">#D2B48C</color>
     <!-- 茶色 -->
     <color name="chocolate">#D2691E</color>

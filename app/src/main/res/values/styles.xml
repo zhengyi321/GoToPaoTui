@@ -24,4 +24,19 @@
     </style>
     <!--首页底部栏-->
 
+    <!--main ordercenter-->
+    <style name="main_ordercenter">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@drawable/fragment_main_ordercenter_ordertype_data_textcolor_selector</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_weight">0.5</item>
+    </style>
+    <!--main ordercenter-->
+
 </resources>

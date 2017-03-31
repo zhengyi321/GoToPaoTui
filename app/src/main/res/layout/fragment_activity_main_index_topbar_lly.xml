@@ -3,8 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_main_index_topbar_height"
     android:background="@color/transparent"
-    android:alpha="1"
+    android:id="@+id/rly_main_index_topbar"
+
     >
+
+    <LinearLayout
+        android:id="@+id/lly_main_index_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_index_green_bg"
+        android:alpha="0"
+        android:orientation="vertical"
+        >
+
+
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

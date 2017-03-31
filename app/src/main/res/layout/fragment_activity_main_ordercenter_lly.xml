@@ -17,7 +17,8 @@
         android:orientation="horizontal"
         android:background="@color/main_ordercenter_white_bg"
         >
-        <RelativeLayout
+      <!--  <RelativeLayout
+            android:id="@+id/rly_main_ordercenter_ordertype"
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,7 +31,22 @@
                 android:textSize="@dimen/dimen_main_ordercenter_content_word_text_size"
                 android:layout_centerInParent="true"
                 />
-        </RelativeLayout>
+        </RelativeLayout>-->
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+        <RadioButton
+            android:id="@+id/rb_main_ordercenter_ordertype"
+            style="@style/main_ordercenter"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/ordertype"
+            android:checked="true"
+            />
+
         <ImageView
             android:layout_width="@dimen/split_width_or_height"
             android:layout_height="match_parent"
@@ -38,7 +54,18 @@
             android:layout_marginBottom="4dp"
             android:layout_marginTop="4dp"
             />
-        <RelativeLayout
+        <RadioButton
+            android:id="@+id/rb_main_ordercenter_data"
+            style="@style/main_ordercenter"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/data"
+
+            />
+        </RadioGroup>
+<!--        <RelativeLayout
+            android:id="@+id/rly_main_ordercenter_data"
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -51,10 +78,11 @@
                 android:textSize="@dimen/dimen_main_ordercenter_content_word_text_size"
                 android:layout_centerInParent="true"
                 />
-        </RelativeLayout>
+        </RelativeLayout>-->
     </LinearLayout>
     <!--订单类型 日期-->
     <com.zoutu.gotolibrary.RecycleView.XRecycleView.XRecyclerView
+        android:id="@+id/xrv_main_ordercenter"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

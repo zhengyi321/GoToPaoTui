@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_penersoncenter_content_word_gray_bg"
+    >
+
+    <!--头部 登陆 退出等-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_main_personcenter_content_top_pic_bg_height"
+        android:background="@drawable/main_personcenter_top_bg"
+        >
+        <RelativeLayout
+
+            android:layout_width="@dimen/dimen_main_personcenter_topbar_tuichu_rly_width"
+            android:layout_height="@dimen/dimen_main_personcenter_topbar_tuichu_rly_height"
+            android:background="@color/transparent"
+            android:alpha="1"
+            android:layout_alignParentRight="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loginout"
+                android:textColor="@color/main_penersoncenter_content_word_black_bg"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/dimen_main_personcenter_topbar_tuichu_word_size"
+                android:textStyle="normal"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rly_main_personcenter_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            >
+        <com.zoutu.gotolibrary.ImageView.RoundImageView
+            android:id="@+id/civ_main_personcenter_top_head"
+            android:layout_width="@dimen/dimen_main_personcenter_content_head_ico_width"
+            android:layout_height="@dimen/dimen_main_personcenter_content_head_ico_height"
+            android:src="@drawable/main_personcenter_headimg"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+
+            />
+        <TextView
+            android:id="@+id/tv_main_personcenter_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="@color/main_penersoncenter_content_word_black_bg"
+            android:textSize="@dimen/dimen_main_personcenter_content_top_tel_word_size"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/civ_main_personcenter_top_head"
+            android:layout_marginTop="@dimen/dimen_main_personcenter_content_tel_margin_top_size"
+            />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--头部 登陆 退出等-->
+    <!--个人提成 金钱-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_main_personcenter_content_money_item_height"
+        android:background="@color/main_personcenter_content_white_bg"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/person_pecrcent"
+                android:textSize="@dimen/dimen_main_personcenter_content_gerenticheng_word_size"
+                android:textColor="@color/main_penersoncenter_tabbart_word_gray_bg"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_main_personcenter_content_gerenticheng_margin_top_size"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="@color/main_penersoncenter_content_word_black_bg"
+                android:textSize="@dimen/dimen_main_personcenter_content_money_word_size"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_main_personcenter_content_money_word_margin_top_size"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            >
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/submittobank"
+                    android:textColor="@color/main_penersoncenter_tabbart_word_gray_bg"
+                    android:textSize="@dimen/dimen_main_personcenter_content_lijitiquzhiyinhangka_word_size"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!--个人提成 金钱-->
+    <!--立即打卡-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_main_personcenter_content_lijidaka_item_height"
+        android:layout_marginTop="@dimen/dimen_main_personcenter_content_lijidaka_item_margin_top_size"
+        android:background="@color/main_personcenter_content_white_bg"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clocknow"
+                android:textColor="@color/main_penersoncenter_content_word_black_bg"
+                android:textSize="@dimen/dimen_main_personcenter_content_lijidaka_item_word_size"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_main_personcenter_content_lijidaka_item_word_margintop_size"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            >
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!--立即打卡-->
+    <include layout="@layout/fragment_activity_main_personcenter_content_function_lly"/>
+</LinearLayout>

@@ -10,4 +10,18 @@
     <string name="loading_done">加载完成</string>
     <string name="listview_header_last_time">上次更新时间：</string>
     <!--XRecycleView-->
+
+
+
+    <!--日历 calendar-->
+    <string-array name="calendar_week">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+    <!--日历 calendar-->
 </resources>
