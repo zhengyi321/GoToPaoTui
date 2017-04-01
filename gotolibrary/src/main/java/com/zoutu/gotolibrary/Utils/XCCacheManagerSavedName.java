@@ -12,5 +12,6 @@ public class XCCacheManagerSavedName {
     public String isRememberMyLogin = "isRememberMyLogin";
     public String orderNo = "orderNo";
     public String showMainFragment = "showMainFragment";
+    public String systemGivenOrder = "systemGivenOrder";
     /*缓存中的字段*/
 }

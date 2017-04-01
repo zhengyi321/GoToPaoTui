@@ -7,17 +7,20 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.zoutu.gotolibrary.Bean.AngleGetOrderBean;
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder.MainGetOrderFragment;
 import com.zoutu.gotopaotui.ActivityMain.FragmentIndex.MainIndexFragment;
 import com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.MainOrderCenterFragment;
 import com.zoutu.gotopaotui.ActivityMain.FragmentPersonCenter.MainPersonCenterFragment;
+import com.zoutu.gotopaotui.NetWork.AngleOrderNetWorks;
 import com.zoutu.gotopaotui.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observer;
 
 /**
  * Created by admin on 2017/3/29.
@@ -149,9 +152,11 @@ public class MainActivityController extends BaseController {
                 break;
             case "getorder":
                 if(mainGetOrderFragment != null){
+
                     transaction.show(mainGetOrderFragment);
                 }else {
                     mainGetOrderFragment = new MainGetOrderFragment();
+
                     transaction.add(R.id.fly_main_content, mainGetOrderFragment, "getorder");
                 }
                 break;
@@ -185,4 +190,6 @@ public class MainActivityController extends BaseController {
 
         transaction.commit();
     }
+
+
 }

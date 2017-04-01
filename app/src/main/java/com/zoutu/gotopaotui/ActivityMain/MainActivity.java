@@ -116,6 +116,7 @@ public class MainActivity extends Activity {
                 String angelAnid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
                 if((angelAnid != null)&&(!angelAnid.isEmpty())){
                     System.out.println("aid:"+angelAnid+" blat:"+blat+" blon:"+blon);
+                  /*  Toast.makeText(MainActivity.this," blat:"+blat+" blon:"+blon+" addr"+location.getAddress()+location.getLocationDescribe(),Toast.LENGTH_SHORT).show();*/
                     AngleBaiduLocNetWorks angleBaiduLocNetWorks = new AngleBaiduLocNetWorks();
                     angleBaiduLocNetWorks.submitLocToNet(angelAnid,(float) blat,(float) blon, new Observer<BaseBean>() {
                         @Override
@@ -130,7 +131,7 @@ public class MainActivity extends Activity {
 
                         @Override
                         public void onNext(BaseBean baseBean) {
-                            Toast.makeText(MainActivity.this,"地图定位"+baseBean.getResult(),Toast.LENGTH_SHORT).show();
+                        /*    Toast.makeText(MainActivity.this,"地图定位"+baseBean.getResult(),Toast.LENGTH_SHORT).show();*/
                         }
                     });
                 }

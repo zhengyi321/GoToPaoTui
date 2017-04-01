@@ -1,7 +1,9 @@
 package com.zoutu.gotopaotui.NetWork;
 
+import com.zoutu.gotolibrary.Bean.AngleGetOrderBean;
 import com.zoutu.gotolibrary.Bean.AngleOrderBean;
 import com.zoutu.gotolibrary.Bean.AngleOrderDetailBean;
+import com.zoutu.gotolibrary.Bean.BaseBean;
 import com.zoutu.gotopaotui.NetWork.BaseFile.BaseNetWork;
 
 import java.util.List;
@@ -34,6 +36,14 @@ public class AngleOrderNetWorks extends BaseNetWork {
         @GET("staffs/staffindone.do")
         Observable<List<AngleOrderDetailBean>> getAngleOrderDetailFromNet(@Query("angelAnid") String angelAnid,@Query("orderNo") String orderNo);
 
+        //跑腿员派单情况
+        @GET("orders/appfindonly.do")
+        Observable<AngleGetOrderBean> systemGivenOrderFromNet(@Query("orderNo") String orderNo);
+
+        //跑腿员接单
+        @GET("orders/joinorder.do")
+        Observable<BaseBean> getOrderFromNet(@Query("angelAnid") String angelAnid,@Query("orderNo") String orderNo);
+
 /*        @GET("staffs/staffindone.do")
         Observable<AngleOrderDetailBean> angleOrderDetail(@Query("angelAnid") String angelAnid, @Query("orderNo") String orderNo);*/
         /*用户退出*/
@@ -48,6 +58,12 @@ public class AngleOrderNetWorks extends BaseNetWork {
 
     public void getAngleOrderDetailFromNet(String angelAnid,String orderNo,Observer<List<AngleOrderDetailBean>> observer){
         setSubscribe(service.getAngleOrderDetailFromNet(angelAnid,orderNo),observer);
+    }
+    public void systemGivenOrderFromNet(String orderNo,Observer<AngleGetOrderBean> observer){
+        setSubscribe(service.systemGivenOrderFromNet(orderNo),observer);
+    }
+    public void getOrderFromNet( String angelAnid,String orderNo,Observer<BaseBean> observer){
+        setSubscribe(service.getOrderFromNet(angelAnid,orderNo),observer);
     }
 /*    public  void angleOrderDetail(String angelAnid, String orderNo, Observer<AngleOrderDetailBean> observer){
         setSubscribe(service.angleOrderDetail(angelAnid,orderNo),observer);

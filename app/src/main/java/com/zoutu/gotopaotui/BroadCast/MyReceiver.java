@@ -12,17 +12,24 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
+import com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder.MainGetOrderFragment;
 import com.zoutu.gotopaotui.ActivityMain.MainActivity;
 import com.zoutu.gotopaotui.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
+import cn.jpush.android.api.BasicPushNotificationBuilder;
 import cn.jpush.android.api.JPushInterface;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -95,20 +102,34 @@ public class MyReceiver extends BroadcastReceiver {
 
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
 
-
+		setNotification4(context);
 
 		NotificationCompat.Builder notification = new NotificationCompat.Builder(context);
-
 		notification.setAutoCancel(true)
-				.setContentText("自定义推送声音")
-				.setContentTitle("极光测试")
+				.setContentText("请接单")
+				.setContentTitle("走兔跑腿")
 				.setSmallIcon(R.mipmap.ic_launcher);
 
-
-
+		/*String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);*/
 		String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+		Toast.makeText(context,"message:"+message,Toast.LENGTH_SHORT).show();
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
+		System.out.print("message:"+message);
 		String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
- 		if (!TextUtils.isEmpty(extras)) {
+/*		String platform = bundle.getString("platform");
+		String audience = bundle.getString("audience");*/
+
+		notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" +R.raw.zoutu));
+
+
+/*
+		if (!TextUtils.isEmpty(extras)) {
 			try {
 				JSONObject extraJson = new JSONObject(extras);
 				if (null != extraJson && extraJson.length() > 0) {
@@ -126,22 +147,44 @@ public class MyReceiver extends BroadcastReceiver {
 
 			}
 
-		}
+		}*/
 		/*点击推送图标后转入的页面*/
 		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
 		XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
 		xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
+		int index = message.indexOf("=");
+		if(index > 0) {
+			String orderNo = message.substring(index+1, message.length());
+			xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder, orderNo);
 		/*点击推送图标后转入的页面*/
-		Intent mIntent = new Intent(context,MainActivity.class);
+			Intent mIntent = new Intent(context, MainGetOrderFragment.class);
 
-		mIntent.putExtras(bundle);
-		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, mIntent, 0);
+			mIntent.putExtras(bundle);
+			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, mIntent, 0);
 
-		notification.setContentIntent(pendingIntent);
-
+			notification.setContentIntent(pendingIntent);
+		}
 
 
 		notificationManager.notify(2, notification.build());
 
+	}
+
+
+
+
+
+
+
+
+
+
+	//自定义报警通知（震动铃声都不要）  http://blog.csdn.net/fuzhongbin/article/details/51162228
+	public void setNotification4(Context context){
+		BasicPushNotificationBuilder builder = new BasicPushNotificationBuilder(context);
+		builder.statusBarDrawable = R.mipmap.ic_launcher;
+		builder.notificationFlags = Notification.FLAG_AUTO_CANCEL;  //设置为自动消失
+		builder.notificationDefaults = Notification.DEFAULT_LIGHTS;// 设置为铃声与震动都不要
+		JPushInterface.setDefaultPushNotificationBuilder(builder);
 	}
 }

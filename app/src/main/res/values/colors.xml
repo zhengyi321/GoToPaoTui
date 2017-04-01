@@ -19,9 +19,12 @@
     <!--main-index-->
 
     <!--main getorder-->
-    <color name="main_getorder_gray_bg">#f5f5f5</color>
+    <color name="main_getorder_gray_bg">#b3b3b3</color>
     <color name="main_getorder_topbar_black_word_size">#000000</color>
     <color name="main_getorder_topbar_white_bg">#ffffff</color>
+    <color name="main_getorder_submit_green_bg">#70cc14</color>
+    <color name="main_getorder_content_white_bg">#ffffff</color>
+    <color name="main_getorder_content_word_black_bg">#000000</color>
     <!--main getorder-->
 
     <!--main_ordercenter-->

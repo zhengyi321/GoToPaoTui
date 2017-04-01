@@ -2,9 +2,14 @@ package com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
+import com.zoutu.gotolibrary.Bean.AngleGetOrderBean;
+import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
 import com.zoutu.gotolibrary.RecycleView.XRecycleView.XRecyclerView;
+import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.BaseController;
+import com.zoutu.gotopaotui.NetWork.AngleOrderNetWorks;
 import com.zoutu.gotopaotui.R;
 
 import java.util.ArrayList;
@@ -12,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observer;
 
 /**
  * Created by admin on 2017/3/28.
@@ -22,8 +28,8 @@ public class MainGetOrderFragmentController extends BaseController{
 
     @BindView(R.id.xrv_main_getorder)
     XRecyclerView xrvMainGetOrder;
-    List<String> list ;
-    MainGetOrderFragmentRecycleViewAdapter mainGetOrderFragmentRecycleViewAdapter;
+    List<AngleGetOrderBean> list ;
+    public MainGetOrderFragmentRecycleViewAdapter mainGetOrderFragmentRecycleViewAdapter;
     public MainGetOrderFragmentController(View view1){
         view = view1;
         init();
@@ -34,6 +40,7 @@ public class MainGetOrderFragmentController extends BaseController{
     public void init() {
         ButterKnife.bind(this,view);
         initRecycleView();
+        systemGiverOrder();
     }
 
     private void initRecycleView(){
@@ -55,5 +62,42 @@ public class MainGetOrderFragmentController extends BaseController{
                 xrvMainGetOrder.loadMoreComplete();
             }
         });
+    }
+
+
+    private void systemGiverOrder(){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+/*        Toast.makeText(activity,"systemGiverOrder",Toast.LENGTH_SHORT).show();*/
+        String orderNo = xcCacheManager.readCache(xcCacheManagerSavedName.systemGivenOrder);
+        if(orderNo != null) {
+            AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
+            /*Toast.makeText(activity,"orderNo"+orderNo,Toast.LENGTH_SHORT).show();*/
+           /* if(mainGetOrderFragment.mainGetOrderFragmentController ==null){
+                Toast.makeText(activity,"null",Toast.LENGTH_SHORT).show();
+            }
+            Toast.makeText(activity,"not null",Toast.LENGTH_SHORT).show();*/
+            angleOrderNetWorks.systemGivenOrderFromNet(orderNo, new Observer<AngleGetOrderBean>() {
+                @Override
+                public void onCompleted() {
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+
+                }
+
+                @Override
+                public void onNext(AngleGetOrderBean bean) {
+                    mainGetOrderFragmentRecycleViewAdapter.addBean(new AngleGetOrderBean());
+                    XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+                    XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+                    Toast.makeText(activity,"systemGiverOrder",Toast.LENGTH_SHORT).show();
+                    xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder,"");
+                }
+            });
+            xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder,"");
+        }
     }
 }

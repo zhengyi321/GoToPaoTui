@@ -63,9 +63,9 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
     @Override
     public void onBindViewHolder(ItemViewHold holder, int position) {
         if(holder != null){
-            TimeUtil timeUtil = new TimeUtil();
-            String time = timeUtil.dateToString(angleOrderBeanList.get(position).getOrderOrdertime());
-            holder.tvMainOrderCenterDataTime.setText(time);
+          /*  TimeUtil timeUtil = new TimeUtil();
+            String time = timeUtil.dateToString(angleOrderBeanList.get(position).getOrderOrdertime());*/
+            holder.tvMainOrderCenterDataTime.setText(angleOrderBeanList.get(position).getOrderOrdertime());
             holder.tvMainOrderCenterDestAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr());
             holder.tvMainOrderCenterBegAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr1());
             holder.tvMainOrderCenterOrderNo.setText(angleOrderBeanList.get(position).getOrderNo());

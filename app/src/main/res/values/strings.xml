@@ -37,8 +37,9 @@
 
 
     <!--main getorder-->
-
-
+    <string name="sendaddr">寄件地址:</string>
+    <string name="getaddr">收件地址:</string>
+    <string name="remark">备注:</string>
 
 
 
