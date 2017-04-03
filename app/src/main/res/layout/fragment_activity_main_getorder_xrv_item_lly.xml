@@ -57,11 +57,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 >
+
                 <TextView
+                    android:id="@+id/tv_main_getorder_xrv_item_toname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:text="陈老师"
+                    android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+                    android:textColor="@color/main_getorder_content_word_black_bg"
+                    android:layout_gravity="center_vertical"
+                    />
+                <TextView
+                    android:id="@+id/tv_main_getorder_xrv_item_totel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18767775244"
+                    android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+                    android:textColor="@color/main_getorder_content_word_black_bg"
+                    android:layout_span="2"
+                    android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
+                    android:layout_gravity="center_vertical"
                     />
 
             </LinearLayout>
@@ -74,8 +91,12 @@
         android:layout_height="@dimen/zero"
         android:layout_weight="1"
         >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/getaddr"
@@ -84,24 +105,70 @@
             android:textColor="@color/main_getorder_topbar_black_word_size"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
+            android:layout_centerInParent="true"
             />
-        <TextView
-            android:id="@+id/tv_main_getorder_xrv_item_getaddr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="乐清市人民医院"
-            android:textColor="@color/main_getorder_content_word_black_bg"
-            android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
-            android:layout_gravity="center_vertical"
-            />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_main_getorder_xrv_item_getaddr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浙江省乐清市车站路688号"
+                    android:textColor="@color/main_getorder_content_word_black_bg"
+                    android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tv_main_getorder_xrv_item_getname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="陈老师"
+                    android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+                    android:textColor="@color/main_getorder_content_word_black_bg"
+                    android:layout_gravity="center_vertical"
+                    />
+                <TextView
+                    android:id="@+id/tv_main_getorder_xrv_item_gettel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18767775244"
+                    android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+                    android:textColor="@color/main_getorder_content_word_black_bg"
+                    android:layout_span="2"
+                    android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
         android:layout_weight="1"
+        android:orientation="horizontal"
         >
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remark"
@@ -110,6 +177,15 @@
             android:textColor="@color/main_getorder_topbar_black_word_size"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
+            />
+        <TextView
+            android:id="@+id/tv_main_getorder_xrv_item_remark"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="测试 备注"
+            android:textColor="@color/main_getorder_content_word_black_bg"
+            android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
+
             />
     </LinearLayout>
     <LinearLayout
@@ -126,6 +202,7 @@
             >
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rly_main_getorder_getordersubmit"
             android:layout_width="@dimen/zero"
@@ -145,6 +222,7 @@
                 android:layout_centerInParent="true"
                 />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
