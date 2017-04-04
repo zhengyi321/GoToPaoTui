@@ -25,6 +25,7 @@
     <color name="main_getorder_submit_green_bg">#70cc14</color>
     <color name="main_getorder_content_white_bg">#ffffff</color>
     <color name="main_getorder_content_word_black_bg">#000000</color>
+    <color name="main_getorder_content_word_blue_bg">#0000CD</color>
     <!--main getorder-->
 
     <!--main_ordercenter-->
