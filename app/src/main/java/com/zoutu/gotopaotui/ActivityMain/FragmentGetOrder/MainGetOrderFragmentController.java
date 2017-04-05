@@ -70,9 +70,24 @@ public class MainGetOrderFragmentController extends BaseController{
         XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
 /*        Toast.makeText(activity,"systemGiverOrder",Toast.LENGTH_SHORT).show();*/
         String orderNo = xcCacheManager.readCache(xcCacheManagerSavedName.systemGivenOrder);
+        String isGetOrder = xcCacheManager.readCache(xcCacheManagerSavedName.isGetOrder);
+        if((isGetOrder == null)||(isGetOrder.equals("false"))){
+            mainGetOrderFragmentRecycleViewAdapter.clean();
+            return;
+        }
         if(orderNo != null) {
             AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
-            /*Toast.makeText(activity,"orderNo"+orderNo,Toast.LENGTH_SHORT).show();*/
+            Toast.makeText(view.getContext(),"orderNo"+orderNo,Toast.LENGTH_SHORT).show();
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
+            System.out.print("\norderNo:"+orderNo);
            /* if(mainGetOrderFragment.mainGetOrderFragmentController ==null){
                 Toast.makeText(activity,"null",Toast.LENGTH_SHORT).show();
             }
@@ -80,24 +95,26 @@ public class MainGetOrderFragmentController extends BaseController{
             angleOrderNetWorks.systemGivenOrderFromNet(orderNo, new Observer<AngleGetOrderBean>() {
                 @Override
                 public void onCompleted() {
-
+                    /*Toast.makeText(view.getContext(),"onCompleted",Toast.LENGTH_SHORT).show();*/
                 }
 
                 @Override
                 public void onError(Throwable e) {
-
+                    /*Toast.makeText(view.getContext(),"onError"+e,Toast.LENGTH_SHORT).show();*/
                 }
 
                 @Override
                 public void onNext(AngleGetOrderBean bean) {
-                    mainGetOrderFragmentRecycleViewAdapter.addBean(new AngleGetOrderBean());
+                    mainGetOrderFragmentRecycleViewAdapter.addBean(bean);
                     XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
                     XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
-                    Toast.makeText(activity,"systemGiverOrder",Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(view.getContext(),"onNext"+bean.getClientaddr1Name(),Toast.LENGTH_SHORT).show();*/
                     xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder,"");
+                    xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"false");
                 }
             });
             xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder,"");
+            xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"false");
         }
     }
 }

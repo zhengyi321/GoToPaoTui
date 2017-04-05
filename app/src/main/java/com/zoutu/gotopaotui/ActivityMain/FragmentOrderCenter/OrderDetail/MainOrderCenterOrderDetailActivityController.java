@@ -135,7 +135,7 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
         tvMainOrderCenterOrderDetailGetTel.setText(angleOrderDetailBean.getClientaddrTel());
         tvMainOrderCenterOrderDetailGetAddr.setText(angleOrderDetailBean.getClientaddrAddr1());
         /*tvMainOrderCenterOrderDetailGetTel.setText(angleOrderDetailBean.g);*/
-
+        tvMainOrderCenterOrderDetailRemark.setText(angleOrderDetailBean.getOrderRemark());
         tvMainOrderCenterOrderDetailMile.setText((angleOrderDetailBean.getOrderMileage()/1000)+"km");
         tvMainOrderCenterOrderDetailPrice.setText(angleOrderDetailBean.getOrderOrderprice()+"");
     }

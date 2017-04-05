@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -12,9 +13,11 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
+import com.zoutu.gotolibrary.Dialog.GetNewOrderDialog;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder.MainGetOrderFragment;
 import com.zoutu.gotopaotui.ActivityMain.MainActivity;
@@ -43,25 +46,28 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * 2) 接收不到自定义消息
  */
 public class MyReceiver extends BroadcastReceiver {
-	private static final String TAG = "JPush";
-
+	private  final String TAG = "JPush";
+	private GetNewOrderDialog getNewOrderDialog;
+	private Context context1;
+	Bundle bundle1;
 	@Override
 	public void onReceive(Context context, Intent intent) {
-        Bundle bundle = intent.getExtras();
+         bundle1 = intent.getExtras();
+		context1 = context;
 //		Log.d(TAG, "[MyReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
 		
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-            String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
+            String regId = bundle1.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             Log.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
             //send the Registration Id to your server...
                         
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
-        	Log.d(TAG, "[MyReceiver] 接收到推送下来的自定义消息: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
-        	processCustomMessage(context, bundle);
+        	Log.d(TAG, "[MyReceiver] 接收到推送下来的自定义消息: " + bundle1.getString(JPushInterface.EXTRA_MESSAGE));
+        	processCustomMessage(context, bundle1);
         
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 接收到推送下来的通知");
-            int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
+            int notifactionId = bundle1.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
             Log.d(TAG, "[MyReceiver] 接收到推送下来的通知的ID: " + notifactionId);
         	
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
@@ -72,15 +78,19 @@ public class MyReceiver extends BroadcastReceiver {
 			XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
 			XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
 			xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
-			/*点击推送图标后转入的页面*/
-        	Intent i = new Intent(context, MainActivity.class);
-        	i.putExtras(bundle);
-        	//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
-        	context.startActivity(i);
+			xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
+
+
+			Intent i = new Intent(context1, MainActivity.class);
+			i.putExtras(bundle1);
+			//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+			context1.startActivity(i);
+
+
         	
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
-            Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
+            Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle1.getString(JPushInterface.EXTRA_EXTRA));
             //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..
         	
         } else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
@@ -98,13 +108,14 @@ public class MyReceiver extends BroadcastReceiver {
 	 * @param bundle
      */
 
-	private void processCustomMessage(Context context, Bundle bundle) {
-
-		NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+	private void processCustomMessage(final Context context, Bundle bundle) {
+		context1 = context;
+		this.bundle1 = bundle;
+		NotificationManager	notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
 
 		setNotification4(context);
 
-		NotificationCompat.Builder notification = new NotificationCompat.Builder(context);
+		NotificationCompat.Builder	notification = new NotificationCompat.Builder(context);
 		notification.setAutoCancel(true)
 				.setContentText("请接单")
 				.setContentTitle("走兔跑腿")
@@ -112,15 +123,25 @@ public class MyReceiver extends BroadcastReceiver {
 
 		/*String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);*/
 		String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-		Toast.makeText(context,"message:"+message,Toast.LENGTH_SHORT).show();
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
-		System.out.print("message:"+message);
+		/*Toast.makeText(context,"message:"+message,Toast.LENGTH_SHORT).show();*/
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+		System.out.print("\n message:"+message);
+
 		String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
 /*		String platform = bundle.getString("platform");
 		String audience = bundle.getString("audience");*/
@@ -152,17 +173,57 @@ public class MyReceiver extends BroadcastReceiver {
 		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
 		XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
 		xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
+		xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
 		int index = message.indexOf("=");
 		if(index > 0) {
 			String orderNo = message.substring(index+1, message.length());
 			xcCacheManager.writeCache(xcCacheManagerSavedName.systemGivenOrder, orderNo);
-		/*点击推送图标后转入的页面*/
-			Intent mIntent = new Intent(context, MainGetOrderFragment.class);
 
-			mIntent.putExtras(bundle);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, mIntent, 0);
+
+		/*点击推送图标后转入的页面*/
+			getNewOrderDialog = new GetNewOrderDialog(context1).Build.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dissmissDialog();
+				}
+			}).setPositiveButton("确认", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dissmissDialog();
+				}
+			}).setCallBackListener(new GetNewOrderDialog.DialogCallBackListener() {
+				@Override
+				public void callBack(String msgName) {
+					if(msgName.equals("yes")){
+						/*Toast.makeText(context1,"msgName:this is yes2",Toast.LENGTH_SHORT).show();*/
+						XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+						XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+						xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
+						xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
+						/*点击推送图标后转入的页面*/
+						Intent i = new Intent(context1, MainActivity.class);
+						i.putExtras(bundle1);
+						//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+						context1.startActivity(i);
+					}
+				}
+			}).build(context);
+			getNewOrderDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+			showDialog();
+
+
+
+			Intent mIntent = new Intent(context1, MainActivity.class);
+
+			mIntent.putExtras(bundle1);
+			PendingIntent pendingIntent = PendingIntent.getActivity(context1, 0, mIntent, 0);
 
 			notification.setContentIntent(pendingIntent);
+
+
+
+
 		}
 
 
@@ -171,7 +232,15 @@ public class MyReceiver extends BroadcastReceiver {
 	}
 
 
+	public void showDialog() {
+		if (getNewOrderDialog != null && !getNewOrderDialog.isShowing())
+			getNewOrderDialog.show();
+	}
 
+	public void dissmissDialog() {
+		if (getNewOrderDialog != null && getNewOrderDialog.isShowing())
+			getNewOrderDialog.dismiss();
+	}
 
 
 

@@ -37,31 +37,27 @@
             android:layout_weight="3"
             android:orientation="vertical"
             >
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight="1"
-            android:orientation="horizontal"
             >
             <TextView
                 android:id="@+id/tv_main_getorder_xrv_item_toaddr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="浙江省乐清市车站路688号"
                 android:textColor="@color/main_getorder_content_word_black_bg"
                 android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
-                android:layout_gravity="center_vertical"
+                android:layout_centerVertical="true"
                 />
 
-        </LinearLayout>
+        </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 >
-
-
             <RelativeLayout
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
@@ -72,22 +68,21 @@
                     android:id="@+id/tv_main_getorder_xrv_item_toname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="陈老师"
                     android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
                     android:textColor="@color/main_getorder_content_word_black_bg"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     />
                 <TextView
                     android:id="@+id/tv_main_getorder_xrv_item_totel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="18767775244"
+
                     android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
                     android:textColor="@color/main_getorder_content_word_blue_bg"
                     android:layout_span="2"
                     android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
 
                     />
@@ -131,22 +126,23 @@
             android:layout_weight="3"
             android:orientation="vertical"
             >
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
                 android:layout_weight="1"
                 >
+
                 <TextView
                     android:id="@+id/tv_main_getorder_xrv_item_getaddr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="浙江省乐清市车站路688号"
+
                     android:textColor="@color/main_getorder_content_word_black_bg"
                     android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
-                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
                     />
 
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
@@ -162,22 +158,22 @@
                     android:id="@+id/tv_main_getorder_xrv_item_getname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="陈老师"
+
                     android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
                     android:textColor="@color/main_getorder_content_word_black_bg"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     />
                 <TextView
                     android:id="@+id/tv_main_getorder_xrv_item_gettel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="18767775244"
+
                     android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
                     android:textColor="@color/main_getorder_content_word_blue_bg"
                     android:layout_span="2"
                     android:layout_marginLeft="@dimen/dimen_main_getorder_content_margin_left_size"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     />
                 </RelativeLayout>
@@ -221,9 +217,9 @@
             >
         <TextView
             android:id="@+id/tv_main_getorder_xrv_item_remark"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="测试 备注"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:textColor="@color/main_getorder_content_word_black_bg"
             android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
 
@@ -257,12 +253,11 @@
             android:layout_weight="3"
             >
             <TextView
+                android:id="@+id/tv_main_getorder_xrv_item_ordertime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2017-04-01 20:30:33"
                 android:textColor="@color/main_getorder_content_word_black_bg"
                 android:textSize="@dimen/dimen_main_getorder_content_content_word_size"
-
                 android:layout_centerVertical="true"
                 />
         </RelativeLayout>

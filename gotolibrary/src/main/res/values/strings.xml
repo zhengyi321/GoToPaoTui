@@ -24,4 +24,12 @@
         <item>六</item>
     </string-array>
     <!--日历 calendar-->
+
+
+    <!--dialog -->
+
+    <string name="cancel">取消</string>
+    <string name="query">确认</string>
+    <string name="newOrder">您有新的订单</string>
+    <!--dialog shoudongshuru-->
 </resources>

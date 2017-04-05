@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--我是分割线-->
+    <dimen name="the_split_line_height">0.5dip</dimen>
+    <dimen name="zero">0dp</dimen>
+    <!--我是分割线-->
     <!--XRecycleView-->
     <dimen name="textandiconmargin">10dp</dimen>
     <dimen name="xrv_down_arrow_word_size">10sp</dimen>

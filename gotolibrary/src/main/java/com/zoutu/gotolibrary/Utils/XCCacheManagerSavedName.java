@@ -13,5 +13,6 @@ public class XCCacheManagerSavedName {
     public String orderNo = "orderNo";
     public String showMainFragment = "showMainFragment";
     public String systemGivenOrder = "systemGivenOrder";
+    public String isGetOrder = "isGetOrder";
     /*缓存中的字段*/
 }

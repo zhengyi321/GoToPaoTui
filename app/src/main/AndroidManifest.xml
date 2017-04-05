@@ -271,6 +271,11 @@
 
 
 
+
+
+        <!--Service-->
+        <service android:name=".ActivityMain.LocMapService"/>
+        <!--Service-->
         <!--轮播图https://github.com/zhuxiujia/LoopView-->
 
         <!--广播-->
