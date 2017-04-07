@@ -36,6 +36,7 @@
 
     <color name="main_ordercenter_gray_bg">#f5f5f5</color>
     <color name="main_ordercenter_logo_green_bg">#70cc14</color>
+    <color name="main_ordercenter_content_finish_submit_green_bg">#70cc14</color>
     <color name="main_ordercenter_logo_blue_bg">#6699ff</color>
     <!--main_ordercenter-->
 

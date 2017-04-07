@@ -7,14 +7,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zoutu.gotolibrary.Bean.AngleOrderBean;
+import com.zoutu.gotolibrary.Bean.BaseBean;
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
 import com.zoutu.gotolibrary.Utils.TimeUtil;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.OrderDetail.MainOrderCenterOrderDetailActivity;
+import com.zoutu.gotopaotui.NetWork.AngleOrderNetWorks;
 import com.zoutu.gotopaotui.R;
 
 import java.util.Collection;
@@ -23,6 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observer;
 
 /**
  * Created by admin on 2017/3/30.
@@ -66,8 +71,8 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
           /*  TimeUtil timeUtil = new TimeUtil();
             String time = timeUtil.dateToString(angleOrderBeanList.get(position).getOrderOrdertime());*/
             holder.tvMainOrderCenterDataTime.setText(angleOrderBeanList.get(position).getOrderOrdertime());
-            holder.tvMainOrderCenterDestAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr());
-            holder.tvMainOrderCenterBegAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr1());
+            holder.tvMainOrderCenterDestAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr1());
+            holder.tvMainOrderCenterBegAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr());
             holder.tvMainOrderCenterOrderNo.setText(angleOrderBeanList.get(position).getOrderNo());
             holder.tvMainOrderCenterMoney.setText(" ¥ "+ angleOrderBeanList.get(position).getOrderOrderprice());
             holder.pos = position;
@@ -105,6 +110,38 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
         TextView tvMainOrderCenterOrderNo;
         @BindView(R.id.tv_main_ordercenter_money)
         TextView tvMainOrderCenterMoney;
+
+        @BindView(R.id.bt_main_ordercenter_orderfinish_submit)
+        Button btMainOrderCenterOrderFinishSubmit;
+        @OnClick(R.id.bt_main_ordercenter_orderfinish_submit)
+        public void btMainOrderCenterOrderFinishSubmitOnclick(){
+            finishOrderToNet();
+        }
+
+        private void finishOrderToNet(){
+            XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+            XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+            String angelAnid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
+            if((angelAnid != null)&&(!angelAnid.isEmpty())){
+                AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
+                angleOrderNetWorks.finishOrderToNet(angelAnid, angleOrderBeanList.get(pos).getOrderNo(), new Observer<BaseBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseBean baseBean) {
+                        Toast.makeText(context,baseBean.getResult(),Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
 
         public ItemViewHold(View viewItem){

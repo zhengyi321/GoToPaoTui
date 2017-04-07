@@ -134,7 +134,7 @@
                 <RelativeLayout
                     android:layout_width="@dimen/zero"
                     android:layout_height="match_parent"
-                    android:layout_weight="3.5"
+                    android:layout_weight="3"
                     >
                     <TextView
                         android:id="@+id/tv_main_ordercenter_destaddr"
@@ -174,7 +174,7 @@
                 <RelativeLayout
                     android:layout_width="@dimen/zero"
                     android:layout_height="match_parent"
-                    android:layout_weight="3.5"
+                    android:layout_weight="3"
                     >
                     <TextView
                         android:id="@+id/tv_main_ordercenter_begaddr"
@@ -299,5 +299,42 @@
                 />
 
         </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:orientation="horizontal"
+        android:layout_weight="0.8"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            >
+            <Button
+                android:id="@+id/bt_main_ordercenter_orderfinish_submit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/activity_main_ordercenter_content_xrv_item_finish_submit_half_radius_shape"
+                android:text="@string/finish"
+                android:layout_margin="@dimen/dimen_main_ordercenter_xrv_item_finish_submit_margin_size"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+        </RelativeLayout>
+
     </LinearLayout>
 </LinearLayout>

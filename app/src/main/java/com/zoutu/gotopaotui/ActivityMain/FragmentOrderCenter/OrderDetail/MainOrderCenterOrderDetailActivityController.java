@@ -100,20 +100,6 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
                     System.out.println("onError:"+e);
                     System.out.println("onError:"+e);
                     System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
-                    System.out.println("onError:"+e);
                 }
 
                 @Override
@@ -130,10 +116,19 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
     private void initDetailFromNet(AngleOrderDetailBean angleOrderDetailBean){
         tvMainOrderCenterOrderDetailToName.setText(angleOrderDetailBean.getClientaddrName());
         tvMainOrderCenterOrderDetailToAddr.setText(angleOrderDetailBean.getClientaddrAddr());
-        tvMainOrderCenterOrderDetailGetTime.setText(angleOrderDetailBean.getOrderOrdertime());
-        tvMainOrderCenterOrderDetailGetName.setText(angleOrderDetailBean.getClientaddr1Name());
-        tvMainOrderCenterOrderDetailGetTel.setText(angleOrderDetailBean.getClientaddrTel());
-        tvMainOrderCenterOrderDetailGetAddr.setText(angleOrderDetailBean.getClientaddrAddr1());
+
+
+
+
+        tvMainOrderCenterOrderDetailToName.setText(angleOrderDetailBean.getClientaddr1Name());
+        tvMainOrderCenterOrderDetailToAddr.setText(angleOrderDetailBean.getClientaddrAddr1());
+        tvMainOrderCenterOrderDetailToTel.setText(angleOrderDetailBean.getClientaddrTel());
+        tvMainOrderCenterOrderDetailToTime.setText(angleOrderDetailBean.getOrderOrdertime());
+
+/*        tvMainOrderCenterOrderDetailGetTime.setText(angleOrderDetailBean.getOrderOrdertime());*/
+        tvMainOrderCenterOrderDetailGetName.setText(angleOrderDetailBean.getClientaddrName());
+       /* tvMainOrderCenterOrderDetailGetTel.setText(angleOrderDetailBean.getClientaddrTel());*/
+        tvMainOrderCenterOrderDetailGetAddr.setText(angleOrderDetailBean.getClientaddrAddr());
         /*tvMainOrderCenterOrderDetailGetTel.setText(angleOrderDetailBean.g);*/
         tvMainOrderCenterOrderDetailRemark.setText(angleOrderDetailBean.getOrderRemark());
         tvMainOrderCenterOrderDetailMile.setText((angleOrderDetailBean.getOrderMileage()/1000)+"km");

@@ -15,7 +15,7 @@ public abstract class RetrofitUtils {
     //服务器路径
     /*private static final String API_SERVER = "http://192.168.16.147:8080";*/
     /*private  final String API_SERVER = "http://www.weather.com.cn";*/
-    ContentUtils contentUtils = new ContentUtils();
+/*    ContentUtils contentUtils = new ContentUtils();*/
     private  Retrofit mRetrofit = null;
     private  OkHttpClient mOkHttpClient;
 
@@ -25,6 +25,7 @@ public abstract class RetrofitUtils {
      * @return
      */
     protected  Retrofit getRetrofit() {
+        ContentUtils contentUtils = new ContentUtils();
 
         if (null == mRetrofit) {
 
@@ -50,4 +51,6 @@ public abstract class RetrofitUtils {
 
         return mRetrofit;
     }
+
+
 }

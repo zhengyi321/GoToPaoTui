@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.zoutu.gotolibrary.Utils.PhoneFormatCheckUtils;
 import com.zoutu.gotopaotui.R;
+import com.zoutu.gotopaotui.Utils.MOBSMSSDKUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +57,7 @@ public class MainPersonCenterLoginRegisterActivity extends Activity {
     }
     /*注册信息提交*/
     private MainPersonCenterLoginRegisterActivityController mainPersonCenterLoginRegisterActivityController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,7 @@ public class MainPersonCenterLoginRegisterActivity extends Activity {
 
     private void init(){
         ButterKnife.bind(this);
+
         mainPersonCenterLoginRegisterActivityController= new MainPersonCenterLoginRegisterActivityController(this);
 
     }
@@ -79,6 +82,7 @@ public class MainPersonCenterLoginRegisterActivity extends Activity {
                 Toast.makeText(this,"请输入验证码",Toast.LENGTH_LONG).show();
             }
             try {
+              /* mobsmssdkUtil.confirmVerifSubmit(tel, identity);*/
                 mainPersonCenterLoginRegisterActivityController.mobsmssdkUtil.confirmVerifSubmit(tel, identity);
             }catch (Exception e){
 
@@ -113,9 +117,11 @@ public class MainPersonCenterLoginRegisterActivity extends Activity {
     /*判断是否正确输入手机号码*/
     public void beginTimeing(){
         String tel = etMainPersonCenterLoginRegUserName.getText().toString();
+        /*mobsmssdkUtil.getVerificationCode(tel);*/
         mainPersonCenterLoginRegisterActivityController.mobsmssdkUtil.getVerificationCode(tel);
         ThreadShow threadShow = new ThreadShow();
         Thread thread = new Thread(threadShow);
+       /* thread.run();*/
         thread.start();
     }
 

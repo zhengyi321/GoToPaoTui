@@ -120,25 +120,51 @@ public class MainGetOrderFragmentRecycleViewAdapter extends RecyclerView.Adapter
             if((aid == null)||(aid.isEmpty())){
                 return;
             }
-            AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
-            angleOrderNetWorks.getOrderFromNet(aid, list.get(pos).getOrderNo(), new Observer<BaseBean>() {
-                @Override
-                public void onCompleted() {
+            String jpushOrderType = xcCacheManager.readCache(xcCacheManagerSavedName.jpushOrderType);
+            if((jpushOrderType != null)&&(!jpushOrderType.isEmpty())) {
+                AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
+                if(jpushOrderType.equals("请接单")) {
 
+                    angleOrderNetWorks.getOrderFromNet(aid, list.get(pos).getOrderNo(), new Observer<BaseBean>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(BaseBean baseBean) {
+                            Toast.makeText(context, "接单" + baseBean.getResult(), Toast.LENGTH_LONG).show();
+                            list.clear();
+                            notifyDataSetChanged();
+                        }
+                    });
                 }
+                if(jpushOrderType.equals("请抢单")){
+                    angleOrderNetWorks.robOrderFromNet(aid, list.get(pos).getOrderNo(), new Observer<BaseBean>() {
+                        @Override
+                        public void onCompleted() {
 
-                @Override
-                public void onError(Throwable e) {
+                        }
 
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(BaseBean baseBean) {
+                            Toast.makeText(context, "抢单" + baseBean.getResult(), Toast.LENGTH_LONG).show();
+                            list.clear();
+                            notifyDataSetChanged();
+                        }
+                    });
                 }
-
-                @Override
-                public void onNext(BaseBean baseBean) {
-                    Toast.makeText(context,"接单"+baseBean.getResult(),Toast.LENGTH_LONG).show();
-                    list.clear();
-                    notifyDataSetChanged();
-                }
-            });
+            }
            /* angleOrderNetWorks.getOrderFromNet(list.get(pos));*/
         }
         /*接单并提交*/

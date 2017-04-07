@@ -77,6 +77,10 @@ public class MyReceiver extends BroadcastReceiver {
 			/*点击推送图标后转入的页面*/
 			XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
 			XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+			String usid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
+			if((usid == null)||(usid.isEmpty())){
+				return;
+			}
 			xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
 			xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
 
@@ -109,6 +113,13 @@ public class MyReceiver extends BroadcastReceiver {
      */
 
 	private void processCustomMessage(final Context context, Bundle bundle) {
+
+		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+		XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+		String usid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
+		if((usid == null)||(usid.isEmpty())){
+			return;
+		}
 		context1 = context;
 		this.bundle1 = bundle;
 		NotificationManager	notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
@@ -116,31 +127,19 @@ public class MyReceiver extends BroadcastReceiver {
 		setNotification4(context);
 
 		NotificationCompat.Builder	notification = new NotificationCompat.Builder(context);
-		notification.setAutoCancel(true)
+/*		notification.setAutoCancel(true)
 				.setContentText("请接单")
 				.setContentTitle("走兔跑腿")
-				.setSmallIcon(R.mipmap.ic_launcher);
+				.setSmallIcon(R.mipmap.ic_launcher);*/
 
 		/*String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);*/
 		String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+		String title = bundle.getString(JPushInterface.EXTRA_TITLE);
+		xcCacheManager.writeCache(xcCacheManagerSavedName.jpushOrderType,title);
 		/*Toast.makeText(context,"message:"+message,Toast.LENGTH_SHORT).show();*/
 		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
-		System.out.print("\n message:"+message);
+
+		System.out.print("\n title:"+title);
 
 		String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
 /*		String platform = bundle.getString("platform");
@@ -170,8 +169,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 		}*/
 		/*点击推送图标后转入的页面*/
-		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
-		XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+
 		xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
 		xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
 		int index = message.indexOf("=");
@@ -220,7 +218,6 @@ public class MyReceiver extends BroadcastReceiver {
 			PendingIntent pendingIntent = PendingIntent.getActivity(context1, 0, mIntent, 0);
 
 			notification.setContentIntent(pendingIntent);
-
 
 
 

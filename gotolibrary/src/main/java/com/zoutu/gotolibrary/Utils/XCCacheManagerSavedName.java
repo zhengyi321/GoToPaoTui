@@ -14,5 +14,6 @@ public class XCCacheManagerSavedName {
     public String showMainFragment = "showMainFragment";
     public String systemGivenOrder = "systemGivenOrder";
     public String isGetOrder = "isGetOrder";
+    public String jpushOrderType = "jpushOrderType";
     /*缓存中的字段*/
 }

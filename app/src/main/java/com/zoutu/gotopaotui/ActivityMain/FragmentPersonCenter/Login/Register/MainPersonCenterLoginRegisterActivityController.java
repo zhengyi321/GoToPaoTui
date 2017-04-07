@@ -1,6 +1,7 @@
 package com.zoutu.gotopaotui.ActivityMain.FragmentPersonCenter.Login.Register;
 
 import android.app.Activity;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -20,6 +21,8 @@ import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import rx.Observer;
+
+import static android.os.Looper.getMainLooper;
 
 /**
  * Created by admin on 2017/3/29.
@@ -49,9 +52,9 @@ public class MainPersonCenterLoginRegisterActivityController extends BaseControl
     int second = 0;
     /*验证码秒数*/
 
+
+
     MOBSMSSDKUtil mobsmssdkUtil ;
-
-
 
     public MainPersonCenterLoginRegisterActivityController(Activity activity1){
         activity = activity1;
@@ -66,12 +69,14 @@ public class MainPersonCenterLoginRegisterActivityController extends BaseControl
 
 
     private void mobSMSRegister(){
+
         EventHandler eventHandler = new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
                 smsSDKResultComplete(event,result,data);
             }
         };
+
         // 注册回调监听接口
         SMSSDK.registerEventHandler(eventHandler);
     }
@@ -97,7 +102,7 @@ public class MainPersonCenterLoginRegisterActivityController extends BaseControl
             }
         }if(result==SMSSDK.RESULT_ERROR)
         {
-            Toast.makeText(activity, "验证码输入错误", Toast.LENGTH_LONG).show();
+            /*Toast.makeText(activity, "验证码输入错误", Toast.LENGTH_LONG).show();*/
             try {
                 Throwable throwable = (Throwable) data;
                 throwable.printStackTrace();
@@ -105,7 +110,7 @@ public class MainPersonCenterLoginRegisterActivityController extends BaseControl
                 String des = object.optString("detail");//错误描述
                 int status = object.optInt("status");//错误代码
                 if (status > 0 && !TextUtils.isEmpty(des)) {
-                    Toast.makeText(activity, des, Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(activity, des, Toast.LENGTH_LONG).show();*/
                     return;
                 }
 

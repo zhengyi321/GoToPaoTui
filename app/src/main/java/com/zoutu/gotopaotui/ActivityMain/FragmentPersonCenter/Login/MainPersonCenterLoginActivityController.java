@@ -54,6 +54,7 @@ public class MainPersonCenterLoginActivityController extends BaseController{
     ImageButton ibMainPersonCenterLoginSubmit;
     @OnClick(R.id.ib_main_personcenter_login_submit)
     public void ibMainPersonCenterLoginSubmitOnclick(){
+        /*Toast.makeText(activity,"this is loginsubmit",Toast.LENGTH_SHORT).show();*/
         loginSubmit();
     }
 
@@ -92,21 +93,26 @@ public class MainPersonCenterLoginActivityController extends BaseController{
 
         String angleName = etMainPersonCenterLoginUserName.getText().toString();
         String anglePass = etMainPersonCenterLoginPass.getText().toString();
+        if(angleName.isEmpty() || anglePass.isEmpty()){
+            Toast.makeText(activity,"请输入帐号或者密码",Toast.LENGTH_SHORT).show();
+            return;
+        }
         AngleUserSettingNetWorks angleUserSettingNetWorks = new AngleUserSettingNetWorks();
         angleUserSettingNetWorks.angleLoginToNet(angleName, anglePass, new Observer<AngleBean>() {
             @Override
             public void onCompleted() {
-
+                Toast.makeText(activity,"this is onCompleted",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(Throwable e) {
-
+                Toast.makeText(activity,"this is onError"+e,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNext(AngleBean angleBean) {
-                if(angleBean != null){
+                Toast.makeText(activity,angleBean.getResult(),Toast.LENGTH_SHORT).show();
+                if((angleBean != null)&&(!angleBean.getResult().equals("用户名不存在"))){
                     XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
                     mCacheManager.writeCache(xcCacheManagerSavedName.userName,etMainPersonCenterLoginUserName.getText().toString());
                     mCacheManager.writeCache(xcCacheManagerSavedName.angelAnid,angleBean.getAngelAnid());
@@ -116,9 +122,10 @@ public class MainPersonCenterLoginActivityController extends BaseController{
                     }else{
                         mCacheManager.writeCache(xcCacheManagerSavedName.isRememberMyLogin,"no" );
                     }
-                    Toast.makeText(activity,angleBean.getResult(),Toast.LENGTH_SHORT).show();
                     activity.finish();
                 }
+
+
 
             }
         });

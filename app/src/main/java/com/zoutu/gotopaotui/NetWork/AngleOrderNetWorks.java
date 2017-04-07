@@ -44,6 +44,14 @@ public class AngleOrderNetWorks extends BaseNetWork {
         @GET("orders/joinorder.do")
         Observable<BaseBean> getOrderFromNet(@Query("angelAnid") String angelAnid,@Query("orderNo") String orderNo);
 
+        //跑腿员抢单
+        @GET("lootorder/striveorder.do")
+        Observable<BaseBean> robOrderFromNet(@Query("angelAnid") String angelAnid,@Query("orderNo") String orderNo);
+
+        /*跑腿员完成订单接口*/
+        @GET("lootorder/finishorder.do")
+        Observable<BaseBean> finishOrderToNet(@Query("angelAnid") String angelAnid,@Query("orderNo") String orderNo);
+        /*跑腿员完成订单接口*/
 /*        @GET("staffs/staffindone.do")
         Observable<AngleOrderDetailBean> angleOrderDetail(@Query("angelAnid") String angelAnid, @Query("orderNo") String orderNo);*/
         /*用户退出*/
@@ -64,6 +72,12 @@ public class AngleOrderNetWorks extends BaseNetWork {
     }
     public void getOrderFromNet( String angelAnid,String orderNo,Observer<BaseBean> observer){
         setSubscribe(service.getOrderFromNet(angelAnid,orderNo),observer);
+    }
+    public void robOrderFromNet( String angelAnid,String orderNo,Observer<BaseBean> observer){
+        setSubscribe(service.robOrderFromNet(angelAnid,orderNo),observer);
+    }
+    public void finishOrderToNet( String angelAnid,String orderNo,Observer<BaseBean> observer){
+        setSubscribe(service.finishOrderToNet(angelAnid,orderNo),observer);
     }
 /*    public  void angleOrderDetail(String angelAnid, String orderNo, Observer<AngleOrderDetailBean> observer){
         setSubscribe(service.angleOrderDetail(angelAnid,orderNo),observer);

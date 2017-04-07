@@ -62,6 +62,7 @@
     <string name="receiveman">收件人</string>
     <string name="ordernum">订单编号 :</string>
     <string name="paymoney">实付款 :</string>
+    <string name="finish">完成</string>
     <!--main_ordercenter-->
 
     <!--main_ordercenter_orderdetail-->
