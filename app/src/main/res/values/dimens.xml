@@ -68,6 +68,10 @@
     <dimen name="dimen_main_ordercenter_xrv_item_margin_left_right_size">15dp</dimen>
     <dimen name="dimen_main_ordercenter_xrv_item_margin_top_bottom_size">10dp</dimen>
     <dimen name="dimen_main_ordercenter_xrv_item_finish_submit_margin_size">5dp</dimen>
+    <dimen name="dimen_main_ordercenter_xrv_item_finish_submit_word_size">13sp</dimen>
+
+    <dimen name="dimen_main_ordercenter_finish_submit_margin_left_right_size">15dp</dimen>
+    <dimen name="dimen_main_ordercenter_finish_submit_margin_bottom_size">10dp</dimen>
     <!--main_ordercenter 订单中心 -->
 
 
@@ -101,6 +105,17 @@
     <dimen name="dimen_main_ordercenter_orderdetail_content_displayroad_in_map_ico_name_margintop">5dp</dimen>
     <!--main_ordercenter_orderdetail-->
 
+    <!--main ordercenter orderdetail checkdetail baidumap-->
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_topbar_height">54dp</dimen>
+
+
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_width">30dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_height">30dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_margin_right_size">10dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_margin_bottom_size">10dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_loc_goto_mark_width">26dp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_checkdetail_baidumap_loc_goto_mark_height">33dp</dimen>
+    <!--main ordercenter orderdetail checkdetail baidumap-->
 
     <!--main_personcenter 个人中心-->
     <dimen name="dimen_main_personcenter_topbar_height">54dp</dimen>

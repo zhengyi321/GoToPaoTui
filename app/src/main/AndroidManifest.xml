@@ -102,7 +102,10 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <!--百度地图-->
-
+    <!--拨打电话-->
+    <!--添加可以向外拨打电话的权限  -->
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <!--拨打电话-->
 
 
 
@@ -252,6 +255,11 @@
 
         <activity
             android:name=".ActivityMain.FragmentOrderCenter.OrderDetail.MainOrderCenterOrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false"
+            />
+        <activity
+            android:name=".ActivityMain.FragmentOrderCenter.OrderDetail.CheckOrderDetailMap.MainOrderCenterOrderDetailCheckOrderDetailMapActivity"
             android:screenOrientation="portrait"
             android:hardwareAccelerated="false"
             />

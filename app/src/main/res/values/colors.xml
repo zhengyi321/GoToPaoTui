@@ -48,6 +48,13 @@
     <color name="main_ordercenter_orderdetail_word_gray_bg">#808080</color>
     <!--main_ordercenter_orderdetail-->
 
+    <!--main ordercenter orderdetail checkdetail baidumap-->
+    <color name="main_ordercenter_orderdetail_checkdetail_baidumap_content_white_bg">#ffffff</color>
+
+
+    <!--main ordercenter orderdetail checkdetail baidumap-->
+
+
     <!--main_personcenter 个人中心-->
     <color name="main_penersoncenter_content_word_black_bg">#010101</color>
     <color name="main_penersoncenter_tabbar_word_black_bg">#010101</color>

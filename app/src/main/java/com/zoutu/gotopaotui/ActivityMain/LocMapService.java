@@ -105,6 +105,9 @@ public class LocMapService extends Service{
                 XCCacheManager xcCacheManager = XCCacheManager.getInstance(getBaseContext());
                 XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
                 String angelAnid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
+                xcCacheManager.writeCache(xcCacheManagerSavedName.selfLocLat,""+blat);
+                xcCacheManager.writeCache(xcCacheManagerSavedName.selfLocLon,""+blon);
+                xcCacheManager.writeCache(xcCacheManagerSavedName.selfLocAddr,""+location.getAddrStr()+" "+location.getLocationDescribe());
                 if((angelAnid != null)&&(!angelAnid.isEmpty())){
                     System.out.println("\naid:"+angelAnid+" blat:"+blat+" blon:"+blon);
                     System.out.println("\naid:"+angelAnid+" blat:"+blat+" blon:"+blon);

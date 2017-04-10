@@ -1,6 +1,7 @@
 package com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zoutu.gotolibrary.Bean.AngleOrderBean;
 import com.zoutu.gotolibrary.Bean.BaseBean;
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
+import com.zoutu.gotolibrary.Dialog.OrderIsFinishDialog;
 import com.zoutu.gotolibrary.Utils.TimeUtil;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.OrderDetail.MainOrderCenterOrderDetailActivity;
@@ -75,6 +78,7 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
             holder.tvMainOrderCenterBegAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr());
             holder.tvMainOrderCenterOrderNo.setText(angleOrderBeanList.get(position).getOrderNo());
             holder.tvMainOrderCenterMoney.setText(" ¥ "+ angleOrderBeanList.get(position).getOrderOrderprice());
+            holder.tvMainOrderCenterOrderFinishSubmitStatus.setText(angleOrderBeanList.get(position).getOrderstatusOrderstatus());
             holder.pos = position;
         }
     }
@@ -85,6 +89,7 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
     }
 
     public class ItemViewHold extends RecyclerView.ViewHolder{
+        OrderIsFinishDialog orderIsFinishDialog;
         int pos = 0;
         @BindView(R.id.lly_main_ordercenter_total)
         LinearLayout llyMainOrderCenterTotal;
@@ -111,11 +116,45 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
         @BindView(R.id.tv_main_ordercenter_money)
         TextView tvMainOrderCenterMoney;
 
-        @BindView(R.id.bt_main_ordercenter_orderfinish_submit)
-        Button btMainOrderCenterOrderFinishSubmit;
-        @OnClick(R.id.bt_main_ordercenter_orderfinish_submit)
-        public void btMainOrderCenterOrderFinishSubmitOnclick(){
-            finishOrderToNet();
+        @BindView(R.id.tv_main_ordercenter_orderfinish_submit_status)
+        TextView tvMainOrderCenterOrderFinishSubmitStatus;
+        @BindView(R.id.rly_main_ordercenter_orderfinish_submit)
+        RelativeLayout rlyMainOrderCenterOrderFinishSubmit;
+        @OnClick(R.id.rly_main_ordercenter_orderfinish_submit)
+        public void rlyMainOrderCenterOrderFinishSubmitOnclick(){
+            if(tvMainOrderCenterOrderFinishSubmitStatus.getText().toString().equals("下单成功")){
+                return;
+            }
+            orderIsFinishDialog = new OrderIsFinishDialog(context).Build.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dissmissDialog();
+                }
+            }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dissmissDialog();
+                }
+            }).setCallBackListener(new OrderIsFinishDialog.DialogCallBackListener() {
+                @Override
+                public void callBack(String tel) {
+
+                    finishOrderToNet();
+                }
+            }).build(context);
+            showDialog();
+
+
+        }
+
+        public void showDialog() {
+            if (orderIsFinishDialog != null && !orderIsFinishDialog.isShowing())
+                orderIsFinishDialog.show();
+        }
+
+        public void dissmissDialog() {
+            if (orderIsFinishDialog != null && orderIsFinishDialog.isShowing())
+                orderIsFinishDialog.dismiss();
         }
 
         private void finishOrderToNet(){
@@ -137,7 +176,8 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
 
                     @Override
                     public void onNext(BaseBean baseBean) {
-                        Toast.makeText(context,baseBean.getResult(),Toast.LENGTH_LONG).show();
+                        /*Toast.makeText(context,baseBean.getResult(),Toast.LENGTH_LONG).show();*/
+                        tvMainOrderCenterOrderFinishSubmitStatus.setText(baseBean.getResult());
                     }
                 });
             }

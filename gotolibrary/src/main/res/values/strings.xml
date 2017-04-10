@@ -31,5 +31,8 @@
     <string name="cancel">取消</string>
     <string name="query">确认</string>
     <string name="newOrder">您有新的订单</string>
+    <string name="warning">提示</string>
+    <string name="theOrderIsFinish">确定订单已完成</string>
     <!--dialog shoudongshuru-->
+
 </resources>

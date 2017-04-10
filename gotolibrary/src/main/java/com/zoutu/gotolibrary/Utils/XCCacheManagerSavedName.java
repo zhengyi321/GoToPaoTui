@@ -15,5 +15,14 @@ public class XCCacheManagerSavedName {
     public String systemGivenOrder = "systemGivenOrder";
     public String isGetOrder = "isGetOrder";
     public String jpushOrderType = "jpushOrderType";
+    public String orderDetailBeginAddr = "orderDetailBeginAddr";
+    public String orderDetailBeginAddrLat = "orderDetailBeginAddrLat";
+    public String orderDetailBeginAddrLon = "orderDetailBeginAddrLon";
+    public String orderDetailEndAddr = "orderDetailEndAddr";
+    public String orderDetailEndAddrLat = "orderDetailEndAddrLat";
+    public String orderDetailEndAddrLon = "orderDetailEndAddrLon";
+    public String selfLocLat = "selfLocLat";
+    public String selfLocLon ="selfLocLon";
+    public String selfLocAddr = "selfLocAddr";
     /*缓存中的字段*/
 }

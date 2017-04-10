@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mv_main_ordercenter_orderdetail_checkdetail_baidumap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.baidu.mapapi.map.MapView>
+    <ImageButton
+        android:id="@+id/ib_main_ordercenter_orderdetail_checkdetail_baidumap_locself"
+        android:layout_width="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_width"
+        android:layout_height="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_height"
+        android:background="@drawable/gps_loc"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_margin_right_size"
+        android:layout_marginBottom="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_gps_loc_mark_margin_bottom_size"
+        />
+    <ImageView
+        android:id="@+id/iv_main_addressmanage_add_user_centerloc"
+        android:layout_width="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_loc_goto_mark_width"
+        android:layout_height="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_loc_goto_mark_height"
+        android:background="@drawable/courier_logo"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

@@ -304,9 +304,31 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
         android:orientation="horizontal"
-        android:layout_weight="0.8"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/dimen_main_ordercenter_finish_submit_margin_left_right_size"
+        android:layout_marginRight="@dimen/dimen_main_ordercenter_finish_submit_margin_left_right_size"
+        android:layout_marginBottom="@dimen/dimen_main_ordercenter_finish_submit_margin_bottom_size"
         >
+
         <RelativeLayout
+            android:id="@+id/rly_main_ordercenter_orderfinish_submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/main_ordercenter_gray_bg"
+            >
+            <TextView
+                android:id="@+id/tv_main_ordercenter_orderfinish_submit_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/orderIsSending"
+                android:textColor="@color/main_ordercenter_word_black_bg"
+                android:textSize="@dimen/dimen_main_ordercenter_xrv_item_finish_submit_word_size"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -334,7 +356,7 @@
             android:layout_weight="1"
             >
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
     </LinearLayout>
 </LinearLayout>

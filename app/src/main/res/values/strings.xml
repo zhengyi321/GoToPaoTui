@@ -63,6 +63,8 @@
     <string name="ordernum">订单编号 :</string>
     <string name="paymoney">实付款 :</string>
     <string name="finish">完成</string>
+    <string name="orderIsSending">订单正在派送中...</string>
+    <string name="orderIsFinish">订单已完成</string>
     <!--main_ordercenter-->
 
     <!--main_ordercenter_orderdetail-->
