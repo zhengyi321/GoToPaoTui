@@ -59,7 +59,7 @@ public class LocMapService extends Service{
     private void initLocation(){
         LocationClientOption option = new LocationClientOption();
 
-        option.setCoorType("bd09ll");
+/*        option.setCoorType("bd09ll");*/
         //可选，默认gcj02，设置返回的定位结果坐标系
 
         int span=3000;

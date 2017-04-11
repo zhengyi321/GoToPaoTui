@@ -3,6 +3,7 @@ package com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.OrderDetail.CheckO
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -16,8 +17,12 @@ import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.Overlay;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.core.SearchResult;
@@ -58,9 +63,11 @@ import butterknife.OnClick;
 
 public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController extends BaseController implements OnGetRoutePlanResultListener,OnGetGeoCoderResultListener {
 
+    BitmapDescriptor bitmapDescriptor;
     // 浏览路线节点相关
     private Double selfLat=0.0,selfLon=0.0;
     private String selfAddr="";
+
     /*百度地图*/
     private  final int accuracyCircleFillColor = 0xAAFFFF88;
     private  final int accuracyCircleStrokeColor = 0xAA00FF00;
@@ -108,8 +115,11 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
         ButterKnife.bind(this,activity);
         mBaidumap = mvMainOrderCenterOrderDetailCheckDetailBaiDuMap.getMap();
         mvMainOrderCenterOrderDetailCheckDetailBaiDuMap.showZoomControls(false);
+        mBaidumap.setMyLocationEnabled(true);// 开启定位图层
+
         initRouteOverLay();
         initGeoSearch();
+        initBitMapDescripTor();
         initSelfLocMark();
         beginGetAddressToSearchLLg();
         showSelfCurrentPos();
@@ -126,52 +136,7 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
         mSearch = RoutePlanSearch.newInstance();
         mSearch.setOnGetRoutePlanResultListener(this);
     }
-    /*开始搜索骑行路径*/
-    private void searchProcess(){
-        /*Toast.makeText(activity,"searchProcess: 1",Toast.LENGTH_LONG).show();*/
-        PlanNode stNode,enNode;
-        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
-        XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
-        String beginAddr = xcCacheManager.readCache(xcCacheManagerSavedName.orderDetailBeginAddr).trim();
-        String endAddr =xcCacheManager.readCache(xcCacheManagerSavedName.orderDetailEndAddr).trim();
-        int beginBlankIndex = beginAddr.indexOf(" ");
-        if(beginBlankIndex >= 0){
-            beginAddr = beginAddr.substring(0,beginBlankIndex+1);
-        }
-        int endBlankIndex = endAddr.trim().indexOf(" ");
-        if(endBlankIndex >= 0){
-            endAddr = endAddr.substring(0,endBlankIndex+1);
-        }
-        int beginCityIndex = beginAddr.indexOf("市");
-        if(beginCityIndex > 0){
 
-            String city = beginAddr.substring(0,beginCityIndex+1).trim();
-            String addr = beginAddr.substring(beginCityIndex+1,beginAddr.length());
-            stNode = PlanNode.withCityNameAndPlaceName(city, addr);
-        }else{
-             stNode = PlanNode.withCityNameAndPlaceName("中国浙江省温州市", beginAddr);
-        }
-        int endCityIndex = endAddr.indexOf("市");
-        if(endCityIndex > 0){
-
-            String city = endAddr.substring(0,endCityIndex+1).trim();
-            String addr = endAddr.substring(endCityIndex+1,endAddr.length()).trim();
-            enNode = PlanNode.withCityNameAndPlaceName(city, addr);
-        }else{
-             enNode = PlanNode.withCityNameAndPlaceName("中国浙江省温州市", endAddr);
-        }
-        // 设置起终点信息，对于tranist search 来说，城市名无意义
-     /*   PlanNode stNode = PlanNode.withCityNameAndPlaceName("北京", startNodeStr);*/
-        /*PlanNode enNode = PlanNode.withCityNameAndPlaceName("北京", endNodeStr);*/
-        if((stNode != null)&&(enNode != null)) {
-            /*Toast.makeText(activity,"searchProcess: 11",Toast.LENGTH_LONG).show();*/
-          /* Toast.makeText(activity,"stNode:"+stNode+" addr:"+enNode,Toast.LENGTH_LONG).show();*/
-            mSearch.bikingSearch((new BikingRoutePlanOption())
-                    .from(stNode).to(enNode));
-            nowSearchType = 4;
-        }
-        /*Toast.makeText(activity,"searchProcess: 12",Toast.LENGTH_LONG).show();*/
-    }
     private void initSelfLocMark(){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
         XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
@@ -183,7 +148,7 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
             selfLon = Double.parseDouble(selfLon1);
             selfAddr = selfAddr1;
 
-        }
+
 
         TextView textView = new TextView(activity);
         Drawable drawable1 = activity.getResources().getDrawable(R.drawable.courier_logo);
@@ -194,13 +159,94 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
         MyLocationData locData = new MyLocationData.Builder()
                /* .accuracy(location.getRadius())*/
                 // 此处设置开发者获取到的方向信息，顺时针0-360
-                .direction(100).latitude(selfLat)
+                /*.direction(100)*/.latitude(selfLat)
                 .longitude(selfLon).build();
         mBaidumap.setMyLocationData(locData);
         mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
         mBaidumap.setMyLocationConfigeration(new MyLocationConfiguration(
                 mCurrentMode, true, mCurrentMarker,
                 accuracyCircleFillColor, accuracyCircleStrokeColor));
+        location(new LatLng(selfLat,selfLon));
+        }
+    }
+
+    private void initBitMapDescripTor(){
+        TextView textView = new TextView(activity);
+        Drawable drawable1 = activity.getResources().getDrawable(R.drawable.courier_logo);
+        drawable1.setBounds(0, 0, 40, 50);//第一0是距左边距离，第二0是距上边距离，40分别是长宽
+        textView.setCompoundDrawables(drawable1, null, null, null);
+        if(bitmapDescriptor == null) {
+            bitmapDescriptor = BitmapDescriptorFactory.fromView(textView);
+        }
+    }
+
+    private void showSelfLocByTime(final LatLng ll, final String selfAddr ){
+/*        mBaidumap.clear();
+        if((beginLLg != null)&&(endLLg != null)){
+            searchProcessByLLG(beginLLg,endLLg);
+        }*/
+      /*  mBaidumap.clear();*/
+
+        if(bitmapDescriptor == null){
+            return;
+        }
+                /*BitmapDescriptor bitmap = null;*/
+        //准备 marker option 添加 marker 使用
+       /* MarkerOptions markerOptions = new MarkerOptions().icon(bitmapDescriptor).position(ll);*/
+        //获取添加的 marker 这样便于后续的操作
+         /*mBaidumap.addOverlay(markerOptions);*/
+        MyLocationData locData = new MyLocationData.Builder()
+               /* .accuracy(location.getRadius())*/
+               /* .direction(100)*/
+                // 此处设置开发者获取到的方向信息，顺时针0-360
+                .latitude(selfLat)
+                .longitude(selfLon).build();
+        mBaidumap.setMyLocationData(locData);
+        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
+        mBaidumap.setMyLocationConfigeration(new MyLocationConfiguration(
+                mCurrentMode, true, bitmapDescriptor,
+                accuracyCircleFillColor, accuracyCircleStrokeColor));
+        mBaidumap.setOnMyLocationClickListener(new BaiduMap.OnMyLocationClickListener() {
+            @Override
+            public boolean onMyLocationClick() {
+                popupText = new TextView(activity);
+                popupText.setBackgroundResource(R.drawable.baidumap_overly_gray_bg_radius);
+                popupText.setPadding(10,5,10,5);
+                popupText.setTextColor(0xFF000000);
+                popupText.setTextSize(10);
+                popupText.setText(selfAddr);
+                popupText.setGravity(Gravity.CENTER);
+                mBaidumap.showInfoWindow(new InfoWindow(popupText, ll, 0));
+                popupText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mBaidumap.hideInfoWindow();
+                    }
+                });
+                return false;
+            }
+        });
+        /* mBaidumap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+
+             @Override
+             public boolean onMarkerClick(Marker marker) {
+                 popupText = new TextView(activity);
+                 popupText.setBackgroundResource(R.drawable.baidumap_overly_gray_bg_radius);
+                popupText.setPadding(10,5,10,5);
+                 popupText.setTextColor(0xFF000000);
+                 popupText.setTextSize(10);
+                 popupText.setText(selfAddr);
+                 popupText.setGravity(Gravity.CENTER);
+                 mBaidumap.showInfoWindow(new InfoWindow(popupText, ll, 0));
+                 popupText.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+                         mBaidumap.hideInfoWindow();
+                     }
+                 });
+                 return false;
+             }
+         });*/
     }
 
     private void showSelfCurrentPos(){
@@ -222,27 +268,8 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
                         selfLat = Double.parseDouble(selfLat1);
                         selfLon = Double.parseDouble(selfLon1);
                         selfAddr = selfAddr1;
+                        showSelfLocByTime(new LatLng(selfLat,selfLon),selfAddr);
                     }
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
-                    System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
                     System.out.print("\nthis is thread:"+selfAddr1+" "+selfLat1+" "+selfLon1);
                 }
             }catch (Exception e){
@@ -253,8 +280,8 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
 
     public void location(LatLng latLng){
         /*只要调用画面 就能赋值*/
-        Toast.makeText(activity,"this is update1:"+latLng.latitude+" rlon:"+latLng.longitude,Toast.LENGTH_SHORT).show();
-        /*无论哪个调用此动画 都将经纬度赋值*/
+ /*       Toast.makeText(activity,"this is update1:"+latLng.latitude+" rlon:"+latLng.longitude,Toast.LENGTH_SHORT).show();
+*/        /*无论哪个调用此动画 都将经纬度赋值*/
        /* mBaiduMap.clear();*/
         //定义地图状态
         MapStatus.Builder builder = new MapStatus.Builder();
@@ -310,88 +337,7 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
     /*根据地名开始查找经纬度*/
 
 
-    /**
-     * 节点浏览示例
-     *
-     * @param v
-     */
-    public void nodeClick(View v) {
-        LatLng nodeLocation = null;
-        String nodeTitle = null;
-        Object step = null;
 
-        if ( nowSearchType != 0  && nowSearchType != -1) {
-            // 非跨城综合交通
-            if (route == null || route.getAllStep() == null) {
-                return;
-            }
-            // 获取节结果信息
-            step = route.getAllStep().get(nodeIndex);
-            if (step instanceof DrivingRouteLine.DrivingStep) {
-                nodeLocation = ((DrivingRouteLine.DrivingStep) step).getEntrance().getLocation();
-                nodeTitle = ((DrivingRouteLine.DrivingStep) step).getInstructions();
-            } else if (step instanceof WalkingRouteLine.WalkingStep) {
-                nodeLocation = ((WalkingRouteLine.WalkingStep) step).getEntrance().getLocation();
-                nodeTitle = ((WalkingRouteLine.WalkingStep) step).getInstructions();
-            } else if (step instanceof TransitRouteLine.TransitStep) {
-                nodeLocation = ((TransitRouteLine.TransitStep) step).getEntrance().getLocation();
-                nodeTitle = ((TransitRouteLine.TransitStep) step).getInstructions();
-            } else if (step instanceof BikingRouteLine.BikingStep) {
-                nodeLocation = ((BikingRouteLine.BikingStep) step).getEntrance().getLocation();
-                nodeTitle = ((BikingRouteLine.BikingStep) step).getInstructions();
-            }
-        } else if ( nowSearchType == 0) {
-            // 跨城综合交通  综合跨城公交的结果判断方式不一样
-
-
-            if (massroute == null || massroute.getNewSteps() == null) {
-                return;
-            }
-
-            boolean isSamecity = nowResultmass.getOrigin().getCityId() == nowResultmass.getDestination().getCityId();
-            int size = 0;
-            if ( isSamecity ) {
-                size = massroute.getNewSteps().size();
-            } else {
-                for ( int i = 0; i < massroute.getNewSteps().size(); i++ ) {
-                    size += massroute.getNewSteps().get(i).size();
-                }
-            }
-
-
-            if ( isSamecity ) {
-                // 同城
-                step = massroute.getNewSteps().get(nodeIndex).get(0);
-            } else {
-                // 跨城
-                int num = 0;
-                for (int j = 0; j < massroute.getNewSteps().size(); j++ ) {
-                    num += massroute.getNewSteps().get(j).size();
-                    if ( nodeIndex - num < 0) {
-                        int k = massroute.getNewSteps().get(j).size() + nodeIndex - num;
-                        step = massroute.getNewSteps().get(j).get(k);
-                        break;
-                    }
-                }
-            }
-
-            nodeLocation = ((MassTransitRouteLine.TransitStep) step).getStartLocation();
-            nodeTitle = ((MassTransitRouteLine.TransitStep) step).getInstructions();
-        }
-
-        if (nodeLocation == null || nodeTitle == null) {
-            return;
-        }
-
-        // 移动节点至中心
-        mBaidumap.setMapStatus(MapStatusUpdateFactory.newLatLng(nodeLocation));
-        // show popup
-        popupText = new TextView(activity);
-        popupText.setBackgroundResource(R.drawable.popup);
-        popupText.setTextColor(0xFF000000);
-        popupText.setText(nodeTitle);
-        mBaidumap.showInfoWindow(new InfoWindow(popupText, nodeLocation, 0));
-    }
     @Override
     public void onGetWalkingRouteResult(WalkingRouteResult walkingRouteResult) {
 
@@ -419,7 +365,7 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
 
     @Override
     public void onGetBikingRouteResult(BikingRouteResult result) {
-        Toast.makeText(activity, "1", Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(activity, "1", Toast.LENGTH_SHORT).show();*/
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             Toast.makeText(activity, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
             /*Toast.makeText(activity, "2", Toast.LENGTH_SHORT).show();*/
@@ -427,7 +373,7 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
             // result.getSuggestAddrInfo()
-            Toast.makeText(activity, "3", Toast.LENGTH_SHORT).show();
+           /* Toast.makeText(activity, "3", Toast.LENGTH_SHORT).show();*/
             return;
         }
         /*Toast.makeText(activity, "4", Toast.LENGTH_SHORT).show();*/
@@ -437,10 +383,12 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
                 BikingRouteOverlay overlay = new MyBikingRouteOverlay(mBaidumap);
                 routeOverlay = overlay;
                 mBaidumap.setOnMarkerClickListener(overlay);
-    /*        Toast.makeText(activity,"result.getRouteLines():"+result.getRouteLines().size(),Toast.LENGTH_LONG).show();*/
-                overlay.setData(result.getRouteLines().get(0));
+/*            Toast.makeText(activity,"result.getRouteLines():"+result.getRouteLines().get(0).getAllStep().size(),Toast.LENGTH_LONG).show();
+            Toast.makeText(activity,"result.getRouteLines():"+result.getRouteLines().get(0).getAllStep().get(0).getInstructions(),Toast.LENGTH_LONG).show();
+ */             overlay.setData(result.getRouteLines().get(0));
                 overlay.addToMap();
                 overlay.zoomToSpan();
+
                 /*Toast.makeText(activity, "6", Toast.LENGTH_SHORT).show();*/
             }else {
                 /*Toast.makeText(activity, "7", Toast.LENGTH_SHORT).show();*/
@@ -478,8 +426,40 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
 
 
     private class MyBikingRouteOverlay extends BikingRouteOverlay {
+
         public  MyBikingRouteOverlay(BaiduMap baiduMap) {
             super(baiduMap);
+        }
+        @Override
+        public boolean onRouteNodeClick(int i) {
+
+            BikingRouteLine mRouteLine = getmRouteLine();
+            if(mRouteLine == null){
+                return false;
+            }
+ /*           Toast.makeText(activity,"this is node:"+mRouteLine.getAllStep().get(i).getWayPoints().size(),Toast.LENGTH_LONG).show();
+            Toast.makeText(activity,"this is node:"+i,Toast.LENGTH_LONG).show();
+*/
+            if (getmRouteLine().getAllStep() != null
+                    && mRouteLine.getAllStep().get(i) != null) {
+                popupText = new TextView(activity);
+                popupText.setBackgroundResource(R.drawable.baidumap_overly_gray_bg_radius);
+                popupText.setPadding(10,5,10,5);
+                popupText.setTextColor(0xFF000000);
+                popupText.setTextSize(10);
+                popupText.setText(mRouteLine.getAllStep().get(i).getInstructions());
+                popupText.setGravity(Gravity.CENTER);
+                mBaidumap.showInfoWindow(new InfoWindow(popupText, mRouteLine.getAllStep().get(i).getEntrance().getLocation(), 0));
+                popupText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mBaidumap.hideInfoWindow();
+                    }
+                });
+
+
+            }
+            return false;
         }
 
         @Override

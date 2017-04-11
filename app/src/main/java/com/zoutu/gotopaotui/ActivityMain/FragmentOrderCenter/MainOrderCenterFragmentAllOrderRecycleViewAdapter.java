@@ -78,7 +78,7 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
             holder.tvMainOrderCenterBegAddr.setText(angleOrderBeanList.get(position).getClientaddrAddr());
             holder.tvMainOrderCenterOrderNo.setText(angleOrderBeanList.get(position).getOrderNo());
             holder.tvMainOrderCenterMoney.setText(" ¥ "+ angleOrderBeanList.get(position).getOrderOrderprice());
-            holder.tvMainOrderCenterOrderFinishSubmitStatus.setText(angleOrderBeanList.get(position).getOrderstatusOrderstatus());
+            holder.tvMainOrderCenterOrderFinishSubmitStatus.setText(angleOrderBeanList.get(position).getOrderTransportation());
             holder.pos = position;
         }
     }
@@ -122,7 +122,7 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
         RelativeLayout rlyMainOrderCenterOrderFinishSubmit;
         @OnClick(R.id.rly_main_ordercenter_orderfinish_submit)
         public void rlyMainOrderCenterOrderFinishSubmitOnclick(){
-            if(tvMainOrderCenterOrderFinishSubmitStatus.getText().toString().equals("下单成功")){
+            if(tvMainOrderCenterOrderFinishSubmitStatus.getText().toString().equals("订单已经派送完成")){
                 return;
             }
             orderIsFinishDialog = new OrderIsFinishDialog(context).Build.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -163,6 +163,7 @@ public class MainOrderCenterFragmentAllOrderRecycleViewAdapter extends RecyclerV
             String angelAnid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
             if((angelAnid != null)&&(!angelAnid.isEmpty())){
                 AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
+
                 angleOrderNetWorks.finishOrderToNet(angelAnid, angleOrderBeanList.get(pos).getOrderNo(), new Observer<BaseBean>() {
                     @Override
                     public void onCompleted() {

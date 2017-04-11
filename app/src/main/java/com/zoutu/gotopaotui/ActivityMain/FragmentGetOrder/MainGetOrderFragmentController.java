@@ -77,7 +77,7 @@ public class MainGetOrderFragmentController extends BaseController{
         }
         if(orderNo != null) {
             AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();
-            Toast.makeText(view.getContext(),"orderNo"+orderNo,Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(view.getContext(),"orderNo"+orderNo,Toast.LENGTH_SHORT).show();*/
             System.out.print("\norderNo:"+orderNo);
             System.out.print("\norderNo:"+orderNo);
             System.out.print("\norderNo:"+orderNo);

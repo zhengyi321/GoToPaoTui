@@ -24,5 +24,6 @@
         android:layout_height="@dimen/dimen_main_ordercenter_orderdetail_checkdetail_baidumap_loc_goto_mark_height"
         android:background="@drawable/courier_logo"
         android:layout_centerInParent="true"
+        android:visibility="invisible"
         />
 </RelativeLayout>

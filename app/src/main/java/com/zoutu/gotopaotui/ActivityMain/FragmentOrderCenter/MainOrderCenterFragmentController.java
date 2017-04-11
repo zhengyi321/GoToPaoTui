@@ -40,14 +40,14 @@ public class MainOrderCenterFragmentController extends BaseController{
     RadioButton rbMainOrderCenterOrderType;
     @OnClick(R.id.rb_main_ordercenter_ordertype)
     public void rbMainOrderCenterOrderTypeOnclick(){
-        getOrderDataFromNet();
+        getOrderDataFromNet("ordertype");
     }
 
     @BindView(R.id.rb_main_ordercenter_data)
     RadioButton rbMainOrderCenterData;
     @OnClick(R.id.rb_main_ordercenter_data)
     public void rbMainOrderCenterDataOnclick(){
-
+        getOrderDataFromNet("time");
     }
 
 
@@ -76,7 +76,7 @@ public class MainOrderCenterFragmentController extends BaseController{
         xrvMainOrderCenter.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                getOrderDataFromNet();
+                getOrderDataFromNet("refresh");
                 xrvMainOrderCenter.refreshComplete();
             }
 
@@ -85,10 +85,10 @@ public class MainOrderCenterFragmentController extends BaseController{
                 xrvMainOrderCenter.loadMoreComplete();
             }
         });
-        getOrderDataFromNet();
+        getOrderDataFromNet("init");
     }
 
-    private void getOrderDataFromNet(){
+    private void getOrderDataFromNet(final String type){
         XCCacheManager xcCacheManager= XCCacheManager.getInstance(view.getContext());
         XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
         String angelId = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
@@ -108,6 +108,11 @@ public class MainOrderCenterFragmentController extends BaseController{
                 @Override
                 public void onNext(List<AngleOrderBean> angleAllOrderBeen) {
                     if(angleAllOrderBeen != null){
+                        if(type.equals("time")){
+                            MainOrderCenterFragmentUtils mainOrderCenterFragmentUtils = new MainOrderCenterFragmentUtils();
+                            List<AngleOrderBean> resultAngleAllOrderBeen = mainOrderCenterFragmentUtils.bubbleSortOrderCenterBean(angleAllOrderBeen);
+                            mainOrderCenterFragmentAllOrderRecycleViewAdapter.setAngleOrderBeanList(resultAngleAllOrderBeen);
+                        }
                         mainOrderCenterFragmentAllOrderRecycleViewAdapter.setAngleOrderBeanList(angleAllOrderBeen);
                     }
                 }
@@ -119,7 +124,7 @@ public class MainOrderCenterFragmentController extends BaseController{
     }
     public void onResume(){
         /*Toast.makeText(view.getContext(),"this is resume",Toast.LENGTH_SHORT).show();*/
-        getOrderDataFromNet();
+        getOrderDataFromNet("onResume");
     }
 
 }

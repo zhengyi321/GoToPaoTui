@@ -153,7 +153,20 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
         XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
         String orderNo = xcCacheManager.readCache(xcCacheManagerSavedName.orderNo);
         String angelAnid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
-        System.out.println("orderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
+        System.out.println("\norderNo:"+orderNo+" angelAnid:"+angelAnid);
        /* Toast.makeText(activity,"orderNo:"+orderNo+" angelAnid:"+angelAnid,Toast.LENGTH_SHORT).show();*/
         if((orderNo != null)&&(angelAnid != null)) {
             AngleOrderNetWorks angleOrderNetWorks = new AngleOrderNetWorks();

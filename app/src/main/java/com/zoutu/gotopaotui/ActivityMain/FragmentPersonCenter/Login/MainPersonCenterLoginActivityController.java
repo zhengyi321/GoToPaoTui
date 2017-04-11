@@ -101,7 +101,7 @@ public class MainPersonCenterLoginActivityController extends BaseController{
         angleUserSettingNetWorks.angleLoginToNet(angleName, anglePass, new Observer<AngleBean>() {
             @Override
             public void onCompleted() {
-                Toast.makeText(activity,"this is onCompleted",Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(activity,"this is onCompleted",Toast.LENGTH_SHORT).show();*/
             }
 
             @Override

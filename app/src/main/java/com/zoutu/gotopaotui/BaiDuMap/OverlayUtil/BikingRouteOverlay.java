@@ -6,6 +6,7 @@ package com.zoutu.gotopaotui.BaiDuMap.OverlayUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -42,7 +43,12 @@ public class BikingRouteOverlay extends OverlayManager {
     public void setData(BikingRouteLine line) {
         mRouteLine = line;
     }
-
+    public BikingRouteLine getmRouteLine(){
+        if(mRouteLine != null){
+            return mRouteLine;
+        }
+        return null;
+    }
     @Override
     public final List<OverlayOptions> getOverlayOptions() {
         if (mRouteLine == null) {
@@ -159,12 +165,14 @@ public class BikingRouteOverlay extends OverlayManager {
     }
 
     @Override
-    public final boolean onMarkerClick(Marker marker) {
+    public boolean onMarkerClick(Marker marker) {
         for (Overlay mMarker : mOverlayList) {
             if (mMarker instanceof Marker && mMarker.equals(marker)) {
                 if (marker.getExtraInfo() != null) {
                     onRouteNodeClick(marker.getExtraInfo().getInt("index"));
                 }
+
+                /*System.out.print("\n this is Marker:"+((Marker) mMarker).getTitle());*/
             }
         }
         return true;

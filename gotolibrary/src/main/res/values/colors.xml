@@ -306,6 +306,10 @@
     <!-- 黑色 -->
     <!--常见颜色-->
 
+    <!--baidumap overly-->
+    <color name="baidumap_overly_gray_bg">#DCDCDC</color>
+    <!--baidumap overly-->
+
     <!--custom dialog-->
     <color name="color_activity_main_ad_white_bg">#ffffff</color>
     <color name="color_activity_addressmanage_topbar_white_word_bg">#ffffff</color>
