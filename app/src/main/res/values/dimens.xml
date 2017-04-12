@@ -94,8 +94,8 @@
     <dimen name="dimen_main_ordercenter_orderdetail_content_send_item_paddingtop">6dp</dimen>
     <dimen name="dimen_main_ordercenter_orderdetail_content_send_item_paddingbottom">6dp</dimen>
     <dimen name="dimen_main_ordercenter_orderdetail_content_price_item_height">60dp</dimen>
-    <dimen name="dimen_main_ordercenter_orderdetail_content_title_word_size">16sp</dimen>
-    <dimen name="dimen_main_ordercenter_orderdetail_content_name_word_size">13sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_title_word_size">12sp</dimen>
+    <dimen name="dimen_main_ordercenter_orderdetail_content_name_word_size">10sp</dimen>
     <dimen name="dimen_main_ordercenter_orderdetail_content_value_word_size">10sp</dimen>
     <dimen name="dimen_main_ordercenter_orderdetail_content_blue_point_width">5dp</dimen>
     <dimen name="dimen_main_ordercenter_orderdetail_content_blue_triangle_width">10dp</dimen>

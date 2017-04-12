@@ -54,7 +54,7 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
                 .setTitle("联系人电话")
                 .setMessage(null)
                 .setCancelText("取消")
-                .setDestructive(tvMainOrderCenterOrderDetailToName.getText().toString())
+                .setDestructive(tvMainOrderCenterOrderDetailToTel.getText().toString())
                 /*.setDestructive1("10公斤以内")*/
                 .setOthers(null)
                 .setOnItemClickListener(new OnItemClickListener() {

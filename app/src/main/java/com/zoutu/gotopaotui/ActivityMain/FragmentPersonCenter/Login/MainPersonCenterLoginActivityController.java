@@ -112,7 +112,8 @@ public class MainPersonCenterLoginActivityController extends BaseController{
             @Override
             public void onNext(AngleBean angleBean) {
                 Toast.makeText(activity,angleBean.getResult(),Toast.LENGTH_SHORT).show();
-                if((angleBean != null)&&(!angleBean.getResult().equals("用户名不存在"))){
+                if((angleBean != null)&&(angleBean.getResult().equals("登录成功"))){
+
                     XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
                     mCacheManager.writeCache(xcCacheManagerSavedName.userName,etMainPersonCenterLoginUserName.getText().toString());
                     mCacheManager.writeCache(xcCacheManagerSavedName.angelAnid,angleBean.getAngelAnid());
