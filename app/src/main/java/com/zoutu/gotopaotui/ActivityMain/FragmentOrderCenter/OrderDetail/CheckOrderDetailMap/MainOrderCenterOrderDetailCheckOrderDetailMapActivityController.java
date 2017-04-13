@@ -480,4 +480,13 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivityController ext
 
 
     }
+
+
+    public void onDestroy(){
+        mvMainOrderCenterOrderDetailCheckDetailBaiDuMap.onDestroy();
+        mBaidumap.clear();
+        mBaidumap = null;
+        search.destroy();
+        mSearch.destroy();
+    }
 }

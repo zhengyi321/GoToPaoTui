@@ -30,4 +30,9 @@ public class MainOrderCenterOrderDetailCheckOrderDetailMapActivity extends Activ
         mainOrderCenterOrderDetailCheckOrderDetailMapActivityController = new MainOrderCenterOrderDetailCheckOrderDetailMapActivityController(this);
 
     }
+
+    protected void onDestroy(){
+        super.onDestroy();
+        mainOrderCenterOrderDetailCheckOrderDetailMapActivityController.onDestroy();
+    }
 }
