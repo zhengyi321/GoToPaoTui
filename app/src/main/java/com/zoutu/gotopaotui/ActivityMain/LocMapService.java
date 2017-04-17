@@ -58,7 +58,7 @@ public class LocMapService extends Service{
     }
     private void initLocation(){
         LocationClientOption option = new LocationClientOption();
-
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);// 设置定位模式
         option.setCoorType("bd09ll");
         //可选，默认gcj02，设置返回的定位结果坐标系
 
