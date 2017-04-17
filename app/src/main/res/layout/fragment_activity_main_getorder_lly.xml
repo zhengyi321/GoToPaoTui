@@ -3,6 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_getorder_gray_bg"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     >
     <include layout="@layout/fragment_activity_main_getorder_topbar_lly"/>
     <com.zoutu.gotolibrary.RecycleView.XRecycleView.XRecyclerView

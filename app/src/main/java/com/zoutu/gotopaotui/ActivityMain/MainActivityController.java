@@ -1,14 +1,19 @@
 package com.zoutu.gotopaotui.ActivityMain;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Build;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.zoutu.gotolibrary.Bean.AngleGetOrderBean;
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
+import com.zoutu.gotolibrary.ImmersionBar.SystemBarTintManager;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder.MainGetOrderFragment;
 import com.zoutu.gotopaotui.ActivityMain.FragmentIndex.MainIndexFragment;
@@ -34,6 +39,7 @@ public class MainActivityController extends BaseController {
     RadioButton rbMainCommonBottomIndex;
     @OnClick(R.id.rb_main_common_bottom_index)
     public void rbMainCommonBottomIndexOnclick(){
+
         initFragment("index");
         /*Toast.makeText(this,"this is 0",Toast.LENGTH_SHORT).show();*/
         /*nvpMainContent.setCurrentItem(1);*/
@@ -66,7 +72,7 @@ public class MainActivityController extends BaseController {
     RadioButton rbMainCommonBottomPersonConter;
     @OnClick(R.id.rb_main_common_bottom_personconter)
     public void rbMainCommonBottomPersonConterOnclick(){
-        initFragment("personconter");
+        initFragment("personcenter");
         /*Toast.makeText(this,"this is 3",Toast.LENGTH_SHORT).show();*/
         /*nvpMainContent.setCurrentItem(4);*/
     }
@@ -143,6 +149,7 @@ public class MainActivityController extends BaseController {
 
         switch (type){
             case "index":
+                initStatusBar("index");
                 if(mainIndexFragment !=null){
                     transaction.show(mainIndexFragment);
                 }else {
@@ -151,6 +158,7 @@ public class MainActivityController extends BaseController {
                 }
                 break;
             case "getorder":
+                initStatusBar("getorder");
                 if(mainGetOrderFragment != null){
 
                     transaction.show(mainGetOrderFragment);
@@ -161,6 +169,7 @@ public class MainActivityController extends BaseController {
                 }
                 break;
             case "ordercenter":
+                initStatusBar("ordercenter");
                 XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
                 XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
                 String angelId = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
@@ -178,7 +187,8 @@ public class MainActivityController extends BaseController {
                     transaction.add(R.id.fly_main_content, mainOrderCenterFragment, "ordercenter");
                 }
                 break;
-            case "personconter":
+            case "personcenter":
+                initStatusBar("personcenter");
                 if(mainPersonCenterFragment != null){
                     transaction.show(mainPersonCenterFragment);
                 }else {
@@ -190,6 +200,41 @@ public class MainActivityController extends BaseController {
 
         transaction.commit();
     }
+    /*沉浸式状态栏*/
+    private void initStatusBar(String type){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+        tintManager.setStatusBarTintEnabled(true);
+        switch (type) {
+            case "index":
+                tintManager.setStatusBarTintResource(R.color.main_index_green_bg);
+                break;
+            case "getorder":
+                tintManager.setStatusBarTintResource(R.color.main_getorder_topbar_white_bg);
+                break;
+            case "ordercenter":
+                tintManager.setStatusBarTintResource(R.color.main_ordercenter_gray_bg);
+                break;
+            case "personcenter":
+                tintManager.setStatusBarTintResource(R.color.main_personcenter_topbar_green_bg);
+                break;
+        }
+    }
+    /*沉浸式状态栏*/
 
 
+    @TargetApi(19)
+    protected void setTranslucentStatus(boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
 }

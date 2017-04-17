@@ -1,10 +1,17 @@
 package com.zoutu.gotopaotui.ActivityMain;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -15,6 +22,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.zoutu.gotolibrary.Bean.BaseBean;
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
+import com.zoutu.gotolibrary.ImmersionBar.SystemBarTintManager;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
 import com.zoutu.gotolibrary.ViewPage.NoScrollViewPager;
 import com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder.MainGetOrderFragment;
@@ -34,6 +42,8 @@ import rx.Observer;
 
 /**
  * http://blog.csdn.net/jxq1994/article/details/52573506
+ *
+ * https://github.com/lguipeng/AndroidPractice  沉浸式状态栏
  * */
 public class MainActivity extends Activity {
 
@@ -55,6 +65,7 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
         mainActivityController = new MainActivityController(this);
         startLocMapService();
+
 /*        initViews();*/
     }
     private void startLocMapService(){
@@ -73,9 +84,12 @@ public class MainActivity extends Activity {
     public native String stringFromJNI();
 
     // Used to load the 'native-lib' library on application startup.
-    static {
+/*    static {
         System.loadLibrary("native-lib");
-    }
+    }*/
+
+
+
 
     @Override
     protected void onDestroy(){

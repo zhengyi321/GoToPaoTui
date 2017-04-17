@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_ordercenter_gray_bg"
+
     >
     <include layout="@layout/fragment_activity_main_ordercenter_topbar_lly"/>
     <ImageView

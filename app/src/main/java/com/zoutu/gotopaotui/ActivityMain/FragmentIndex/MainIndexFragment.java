@@ -1,6 +1,7 @@
 package com.zoutu.gotopaotui.ActivityMain.FragmentIndex;
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.zoutu.gotolibrary.ImmersionBar.SystemBarTintManager;
 import com.zoutu.gotolibrary.ScrollView.SpringScrollView;
+import com.zoutu.gotopaotui.ActivityMain.BaseFragment;
 import com.zoutu.gotopaotui.R;
 
 import butterknife.BindView;
@@ -21,7 +24,7 @@ import butterknife.OnTouch;
  * Created by admin on 2017/3/27.
  */
 
-public class MainIndexFragment extends Fragment {
+public class MainIndexFragment extends BaseFragment {
 
     @BindView(R.id.rly_main_index_topbar)
     RelativeLayout rlyMainIndexTopBar;

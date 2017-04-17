@@ -5,6 +5,8 @@
     android:fillViewport="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     >
 
     <com.zoutu.gotolibrary.ScrollView.SpringScrollView

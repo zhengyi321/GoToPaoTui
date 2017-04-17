@@ -5,19 +5,22 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.zoutu.gotolibrary.ImmersionBar.SystemBarTintManager;
+import com.zoutu.gotopaotui.ActivityMain.BaseFragment;
 import com.zoutu.gotopaotui.R;
 
 /**
  * Created by admin on 2017/3/27.
  */
 
-public class MainOrderCenterFragment extends Fragment {
+public class MainOrderCenterFragment extends BaseFragment {
 
 
     public MainOrderCenterFragmentController mainOrderCenterFragmentController;
@@ -31,6 +34,8 @@ public class MainOrderCenterFragment extends Fragment {
         mainOrderCenterFragmentController = new MainOrderCenterFragmentController(view);
 
     }
+
+
     @Override
     public void onResume(){
         super.onResume();

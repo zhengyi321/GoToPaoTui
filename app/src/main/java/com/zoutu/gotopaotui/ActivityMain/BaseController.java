@@ -2,6 +2,7 @@ package com.zoutu.gotopaotui.ActivityMain;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 /**
@@ -13,4 +14,6 @@ public abstract class BaseController {
     public View view;
     public Context context;
     public abstract void init();
+
+
 }

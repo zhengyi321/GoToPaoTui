@@ -3,6 +3,7 @@ package com.zoutu.gotopaotui.ActivityMain.FragmentGetOrder;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.zoutu.gotolibrary.DBCache.XCCacheManager.xccache.XCCacheManager;
+import com.zoutu.gotolibrary.ImmersionBar.SystemBarTintManager;
 import com.zoutu.gotolibrary.Utils.XCCacheManagerSavedName;
+import com.zoutu.gotopaotui.ActivityMain.BaseFragment;
 import com.zoutu.gotopaotui.R;
 
 import java.util.Set;
@@ -24,7 +27,7 @@ import cn.jpush.android.api.TagAliasCallback;
  * Created by admin on 2017/3/27.
  */
 
-public class MainGetOrderFragment extends Fragment {
+public class MainGetOrderFragment extends BaseFragment {
 /*    Context context;
     public MainGetOrderFragment(Context context1){
 
@@ -40,6 +43,11 @@ public class MainGetOrderFragment extends Fragment {
     private void init(final View view){
         mainGetOrderFragmentController = new MainGetOrderFragmentController(view);
         ButterKnife.bind(this,view);
+        initJPush(view);
+
+
+    }
+    private void initJPush(View view){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(view.getContext());
         XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
         String angelAnid =xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
@@ -54,7 +62,6 @@ public class MainGetOrderFragment extends Fragment {
                 }
             });
         }
-
-
     }
+
 }

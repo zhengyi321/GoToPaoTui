@@ -2,7 +2,10 @@ package com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.OrderDetail;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,6 +23,7 @@ import com.zoutu.gotopaotui.ActivityMain.FragmentOrderCenter.OrderDetail.CheckOr
 import com.zoutu.gotopaotui.NetWork.AngleOrderNetWorks;
 import com.zoutu.gotopaotui.R;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +36,6 @@ import rx.Observer;
  */
 
 public class MainOrderCenterOrderDetailActivityController extends BaseController {
-
 
 
     @BindView(R.id.rly_main_ordercenter_orderdetail_topbar_back)
@@ -77,6 +80,7 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
                 .build()
                 .show();
     }
+
     @BindView(R.id.tv_main_ordercenter_orderdetail_toaddr)
     TextView tvMainOrderCenterOrderDetailToAddr;
     @BindView(R.id.tv_main_ordercenter_orderdetail_totime)
@@ -239,4 +243,21 @@ public class MainOrderCenterOrderDetailActivityController extends BaseController
         activity.startActivity(intent);
        /* }*/
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

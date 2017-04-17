@@ -55,8 +55,9 @@ public class MyReceiver extends BroadcastReceiver {
          bundle1 = intent.getExtras();
 		context1 = context;
 //		Log.d(TAG, "[MyReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
-		
+		isLogin(context);
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
+
             String regId = bundle1.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             Log.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
             //send the Registration Id to your server...
@@ -75,14 +76,8 @@ public class MyReceiver extends BroadcastReceiver {
             
         	//打开自定义的Activity
 			/*点击推送图标后转入的页面*/
-			XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
-			XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
-			String usid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
-			if((usid == null)||(usid.isEmpty())){
-				return;
-			}
-			xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
-			xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
+
+
 
 
 			Intent i = new Intent(context1, MainActivity.class);
@@ -239,7 +234,16 @@ public class MyReceiver extends BroadcastReceiver {
 			getNewOrderDialog.dismiss();
 	}
 
-
+	private void isLogin(Context context){
+		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+		XCCacheManagerSavedName xcCacheManagerSavedName = new XCCacheManagerSavedName();
+		String usid = xcCacheManager.readCache(xcCacheManagerSavedName.angelAnid);
+		if((usid == null)||(usid.isEmpty())){
+			return;
+		}
+		xcCacheManager.writeCache(xcCacheManagerSavedName.showMainFragment,"GetOrder");
+		xcCacheManager.writeCache(xcCacheManagerSavedName.isGetOrder,"true");
+	}
 
 
 

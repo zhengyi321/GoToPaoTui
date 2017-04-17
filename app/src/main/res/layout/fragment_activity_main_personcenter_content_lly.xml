@@ -39,7 +39,7 @@
             android:layout_centerInParent="true"
             >
         <com.zoutu.gotolibrary.ImageView.RoundImageView
-            android:id="@+id/civ_main_personcenter_top_head"
+            android:id="@+id/riv_main_personcenter_top_head"
             android:layout_width="@dimen/dimen_main_personcenter_content_head_ico_width"
             android:layout_height="@dimen/dimen_main_personcenter_content_head_ico_height"
             android:src="@drawable/main_personcenter_headimg"
@@ -56,7 +56,7 @@
             android:textSize="@dimen/dimen_main_personcenter_content_top_tel_word_size"
 
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/civ_main_personcenter_top_head"
+            android:layout_below="@id/riv_main_personcenter_top_head"
             android:layout_marginTop="@dimen/dimen_main_personcenter_content_tel_margin_top_size"
             />
         </RelativeLayout>
